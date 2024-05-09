@@ -57,7 +57,7 @@ Instale my-project com npm
   cd my-project
 ```
 
-## Demonstração 🪤
+## Demonstração 🎣
 
 Insira um gif ou um link de alguma demonstração
 
