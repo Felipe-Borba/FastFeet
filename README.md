@@ -46,7 +46,7 @@ Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) par
 - React
 - JavaScript
 - PrismaJS
-- MySQl
+- MySQL
 
 ## Instalação ⚙ ️
 
