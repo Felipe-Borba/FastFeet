@@ -42,7 +42,7 @@ Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) par
 
 ## Tecnologias 🌐
 
-- NodeJS
+- NodeJS 
 - React
 - JavaScript
 - PrismaJS
