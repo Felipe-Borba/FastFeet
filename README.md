@@ -10,7 +10,7 @@ Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) par
 
 ### Requisitos Funcionais ✅
 
-- [ ] RF01  Deve conter dois tipos de usuário entregador/e ou admin.
+- [ ] RF01 Deve conter dois tipos de usuário entregador/e ou admin.
 - [ ] RF02 Deve ser possível realizar login com CPF e Senha.
 - [ ] RF03 Deve ser possível realizar a criação, leitura, atualização e exclusão dos entregadores.
 - [ ] RF04 Deve ser possível realizar a criação, leitura, atualização e exclusão das encomendas.
@@ -27,7 +27,6 @@ Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) par
 - [ ] RF15 Apenas os administradores podem modificar a senha de um usuário.
 - [ ] RF16 Os entregadores não têm permissão para listar as encomendas de outros entregadores.
 
-
 ### Requisitos não Funcionais 🚫
 
 - [ ] RNF01 O sistema deve garantir que as informações de login (CPF e Senha) sejam protegidas através de criptografia e medidas de segurança adequadas.
@@ -38,17 +37,18 @@ Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) par
 - [ ] RNF06 O sistema deve ser capaz de registrar todas as atividades dos usuários, incluindo operações realizadas, datas e horas, permitindo uma auditoria eficaz e rastreamento de atividades suspeitas.
 - [ ] RNF07 O sistema deve fornecer uma interface intuitiva e fácil de usar, garantindo que os usuários possam realizar suas tarefas de forma eficiente, mesmo sem treinamento extensivo.
 - [ ] RNF08 O sistema deve ser projetado para ser escalável, permitindo que ele cresça conforme a demanda aumenta, sem comprometer o desempenho ou a disponibilidade.
-- [ ] RNF09  O sistema deve ser compatível com diferentes dispositivos e navegadores, garantindo uma experiência consistente para os usuários em todas as plataformas.
+- [ ] RNF09 O sistema deve ser compatível com diferentes dispositivos e navegadores, garantindo uma experiência consistente para os usuários em todas as plataformas.
 - [ ] RNF10 O sistema deve ser facilmente mantido e atualizado, com código limpo e documentação adequada para facilitar futuras modificações e melhorias.
 
 ## Tecnologias 🌐
+
 - NodeJS
 - React
 - JavaScript
 - PrismaJS
 - MySQl
 
-## Instalação 💾
+## Instalação ⚙ ️
 
 Instale my-project com npm
 
@@ -56,13 +56,12 @@ Instale my-project com npm
   npm install my-project
   cd my-project
 ```
-    
-## Demonstração
+
+## Demonstração 🪤
 
 Insira um gif ou um link de alguma demonstração
 
-
-## Teste 🔩
+## Teste 🧪
 
 ## Autores 👤
 
