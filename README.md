@@ -6,9 +6,9 @@ Nesta atividade, não vamos mais descrever detalhadamente rotas e propriedades d
 
 Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) para controle de encomendas de uma transportadora fictícia, a FastFeet.
 
-## Requisitos
+## Requisitos📄
 
-### Requisitos Funcionais
+### Requisitos Funcionais ✅
 
 - [ ] RF01  Deve conter dois tipos de usuário entregador/e ou admin.
 - [ ] RF02 Deve ser possível realizar login com CPF e Senha.
@@ -28,7 +28,7 @@ Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) par
 - [ ] RF16 Os entregadores não têm permissão para listar as encomendas de outros entregadores.
 
 
-### Requisitos não Funcionais
+### Requisitos não Funcionais 🚫
 
 - [ ] RNF01 O sistema deve garantir que as informações de login (CPF e Senha) sejam protegidas através de criptografia e medidas de segurança adequadas.
 - [ ] RNF02 O sistema deve implementar um controle de acesso robusto para garantir que apenas usuários autorizados possam realizar operações específicas, de acordo com seu perfil de usuário (administrador ou entregador).
@@ -41,14 +41,14 @@ Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) par
 - [ ] RNF09  O sistema deve ser compatível com diferentes dispositivos e navegadores, garantindo uma experiência consistente para os usuários em todas as plataformas.
 - [ ] RNF10 O sistema deve ser facilmente mantido e atualizado, com código limpo e documentação adequada para facilitar futuras modificações e melhorias.
 
-## Tecnologias
+## Tecnologias 🌐
 - NodeJS
 - React
 - JavaScript
 - PrismaJS
 - MySQl
 
-## Instalação
+## Instalação 💾
 
 Instale my-project com npm
 
@@ -62,8 +62,9 @@ Instale my-project com npm
 Insira um gif ou um link de alguma demonstração
 
 
-## Teste
-## Autores
+## Teste 🔩
+
+## Autores 👤
 
 - [@DreLuis](https://www.github.com/DreLuis)
 - [@Felipe-Borba](https://www.github.com/Felipe-Borba)
