@@ -40,6 +40,14 @@ Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) par
 - [ ] RNF08 O sistema deve ser projetado para ser escalável, permitindo que ele cresça conforme a demanda aumenta, sem comprometer o desempenho ou a disponibilidade.
 - [ ] RNF09  O sistema deve ser compatível com diferentes dispositivos e navegadores, garantindo uma experiência consistente para os usuários em todas as plataformas.
 - [ ] RNF10 O sistema deve ser facilmente mantido e atualizado, com código limpo e documentação adequada para facilitar futuras modificações e melhorias.
+
+## Tecnologias
+- NodeJS
+- React
+- JavaScript
+- PrismaJS
+- MySQl
+
 ## Instalação
 
 Instale my-project com npm
