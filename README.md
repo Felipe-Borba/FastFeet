@@ -42,7 +42,7 @@ Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) par
 
 ## Tecnologias 🌐
 
-- NodeJS
+- NodeJS <img src="https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png">
 - React
 - JavaScript
 - PrismaJS
