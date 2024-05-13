@@ -1,5 +1,6 @@
 # Fast Feet
 
+## Descrição do projeto
 Como se trata de um desafio, ele necessita de alguns conhecimentos além dos abordados, então é importante ter autonomia para conseguir pesquisar essas coisas caso não saiba como resolver. Por isso, lembre-se, tenha calma e acredite no seu processo.
 
 Nesta atividade, não vamos mais descrever detalhadamente rotas e propriedades dos registros a serem criadas, mas sim, as regras e requisitos que a API deve ter. O motivo disso é para vocês também exercitarem o desenvolvimento e a estruturação dessa parte.
