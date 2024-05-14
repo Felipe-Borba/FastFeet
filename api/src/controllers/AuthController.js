@@ -6,13 +6,13 @@ const prisma = new PrismaClient();
 class AuthController {
   async create(request, response) {
     try {
-      const { username, password } = request.body;
+      const { cpf, password } = request.body;
 
       const hashedPassword = await hash(password, 8);
 
       const user = await prisma.auth.create({
         data: {
-          username,
+          cpf,
           password: hashedPassword,
         },
       });
@@ -25,16 +25,16 @@ class AuthController {
 
   async login(request, response) {
     try {
-      const { username, password } = request.body;
+      const { cpf, password } = request.body;
 
       const user = await prisma.auth.findUnique({
-        where: { username },
+        where: { cpf },
       });
 
       if (!user) {
         return response
           .status(403)
-          .json({ message: "senha ou email incorreto" });
+          .json({ message: "senha ou cpf incorreto" });
       }
 
       const passwordMatched = await compare(password, user.password);
@@ -42,7 +42,7 @@ class AuthController {
       if (!passwordMatched) {
         return response
           .status(403)
-          .json({ message: "senha ou email incorreto" });
+          .json({ message: "senha ou cpf incorreto" });
       }
 
       const token = sign({ user }, process.env.AUTH_SECRET, {
