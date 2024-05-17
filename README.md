@@ -1,11 +1,8 @@
 # Fast Feet
 
 ## Descrição do projeto
-Como se trata de um desafio, ele necessita de alguns conhecimentos além dos abordados, então é importante ter autonomia para conseguir pesquisar essas coisas caso não saiba como resolver. Por isso, lembre-se, tenha calma e acredite no seu processo.
 
-Nesta atividade, não vamos mais descrever detalhadamente rotas e propriedades dos registros a serem criadas, mas sim, as regras e requisitos que a API deve ter. O motivo disso é para vocês também exercitarem o desenvolvimento e a estruturação dessa parte.
-
-Nesse desafio desenvolveremos uma API (em Node.JS) e um front-end (React.js) para controle de encomendas de uma transportadora fictícia, a FastFeet.
+O projeto Fast Feed é um sistema de gestão de entregas que visa facilitar o processo de transporte e entrega de encomendas. Com uma interface intuitiva e funcionalidades específicas para diferentes tipos de usuários, o Fast Feed atende tanto aos entregadores quanto aos administradores responsáveis pela gestão do sistema.
 
 ## Requisitos📄
 
