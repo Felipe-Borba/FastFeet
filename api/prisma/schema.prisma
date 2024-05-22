@@ -24,3 +24,16 @@ enum UserRole {
   ADMIN
   DELIVERY_MAN
 }
+
+enum DelivertType {
+  WITHDRAWAL
+  DELIVERY
+}
+
+model Parcel {
+  id String @id @default(uuid())
+  cep Int 
+  status String
+  codigorastreio String
+  tipoEntrega DelivertType @default(DELIVERY)
+}
