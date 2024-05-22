@@ -1,11 +1,11 @@
-const { hash, compare } = require("bcryptjs");
+const { compare } = require("bcryptjs");
 const { sign } = require("jsonwebtoken");
 
 const prisma = new PrismaClient();
 
-class UsuarioAuthService {
-  async singIn(cpf, senha) {
-    const user = await prisma.usuario.findUnique({
+class UserAuthService {
+  async singIn(cpf, password) {
+    const user = await prisma.user.findUnique({
       where: { cpf },
     });
 
@@ -13,7 +13,7 @@ class UsuarioAuthService {
       throw new Error("senha ou cpf incorreto");
     }
 
-    const passwordMatched = await compare(senha, user.senha);
+    const passwordMatched = await compare(password, user.password);
 
     if (!passwordMatched) {
       throw new Error("senha ou cpf incorreto");
@@ -29,4 +29,4 @@ class UsuarioAuthService {
   signOut() {}
 }
 
-module.export = UsuarioAuthService;
+module.export = UserAuthService;
