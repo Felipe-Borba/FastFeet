@@ -1,13 +1,15 @@
-const UsuarioAuthService = require("../service/user/UsuarioAuthService");
+const UserAuthService = require("../service/user/UserAuthService");
+const CreateUserService = require("../service/user/CreateUserService");
 
-const usuarioAuthService = new UsuarioAuthService();
+const userAuthService = new UserAuthService();
+const createUserService = new CreateUserService();
 
-class UsuarioController {
+class UserController {
   async singIn(request, response) {
     try {
-      const { cpf, senha } = request.body;
+      const { cpf, password } = request.body;
 
-      const token = await usuarioAuthService.singIn(cpf, senha);
+      const token = await userAuthService.singIn(cpf, password);
 
       response.json(token);
     } catch (err) {
@@ -17,13 +19,23 @@ class UsuarioController {
 
   async signOut(request, response) {
     try {
-      await usuarioAuthService.signOut();
+      await userAuthService.signOut();
 
       return response.status(204);
     } catch (err) {
       return response.status(403).json();
     }
   }
+
+  async create(request, response) {
+    try {
+      const user = await createUserService.invoque(request.body);
+
+      return response.status(200).json(user);
+    } catch (err) {
+      return response.status(409).json();
+    }
+  }
 }
 
-module.export = UsuarioController;
+module.export = UserController;

@@ -13,8 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Auth {
-  id       String @id @default(uuid())
-  cpf      String @unique
+model User {
+  id       String   @id @default(uuid())
+  cpf      String   @unique
   password String
+  role     UserRole @default(DELIVERY_MAN)
+}
+
+enum UserRole {
+  ADMIN
+  DELIVERY_MAN
 }
