@@ -37,3 +37,8 @@ model Parcel {
   codigorastreio String
   tipoEntrega DelivertType @default(DELIVERY)
 }
+
+model Recipient {
+  id String @id @default(uuid())
+  name String
+}
