@@ -18,6 +18,7 @@ model User {
   cpf      String   @unique
   password String
   role     UserRole @default(DELIVERY_MAN)
+  parcels Parcel[]
 }
 
 enum UserRole {
@@ -36,6 +37,8 @@ model Parcel {
   status String
   codigorastreio String
   tipoEntrega DelivertType @default(DELIVERY)
+  responsible User? @relation(fields: [responsibleId], references: [id])
+  responsibleId String?
 }
 
 model Recipient {
