@@ -36,6 +36,15 @@ class UserController {
       return response.status(409).json();
     }
   }
+
+  async read(request, response) {
+    try {
+      const user = await readUserService.findById(request.params.id)
+      return response.status(200).json(user)
+    } catch (err) {
+      return response.status(409).json();
+    }
+  }
 }
 
 module.export = UserController;
