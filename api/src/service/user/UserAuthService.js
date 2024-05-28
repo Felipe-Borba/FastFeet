@@ -1,5 +1,6 @@
 const { compare } = require("bcryptjs");
 const { sign } = require("jsonwebtoken");
+const { PrismaClient } = require("@prisma/client")
 
 const prisma = new PrismaClient();
 

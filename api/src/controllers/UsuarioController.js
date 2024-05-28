@@ -5,11 +5,15 @@ const userAuthService = new UserAuthService();
 const createUserService = new CreateUserService();
 
 class UserController {
+  constructor(userAuthService){
+    this.userAuthService = userAuthService
+  }
+
   async singIn(request, response) {
     try {
       const { cpf, password } = request.body;
 
-      const token = await userAuthService.singIn(cpf, password);
+      const token = await this.userAuthService.singIn(cpf, password);
 
       response.json(token);
     } catch (err) {
@@ -19,7 +23,7 @@ class UserController {
 
   async signOut(request, response) {
     try {
-      await userAuthService.signOut();
+      await this.userAuthService.signOut();
 
       return response.status(204);
     } catch (err) {
@@ -29,7 +33,7 @@ class UserController {
 
   async create(request, response) {
     try {
-      const user = await createUserService.invoque(request.body);
+      const user = await this.createUserService.invoque(request.body);
 
       return response.status(200).json(user);
     } catch (err) {
@@ -39,7 +43,7 @@ class UserController {
 
   async read(request, response) {
     try {
-      const user = await readUserService.findById(request.params.id)
+      const user = await this.readUserService.findById(request.params.id)
       return response.status(200).json(user)
     } catch (err) {
       return response.status(409).json();
