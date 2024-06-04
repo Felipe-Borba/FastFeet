@@ -9,4 +9,4 @@ class ListParcelService {
     }
 }
 
-module.export = ListParcelService;
+module.exports = ListParcelService;

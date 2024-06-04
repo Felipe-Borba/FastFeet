@@ -1,5 +1,5 @@
 const { hash } = require("bcryptjs");
-const { PrismaClient } = require("@prisma/client")
+const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
@@ -19,4 +19,4 @@ class CreateUserService {
   }
 }
 
-module.export = CreateUserService;
+module.exports = CreateUserService;

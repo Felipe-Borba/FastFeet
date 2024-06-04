@@ -21,4 +21,4 @@ class UpdateParcelService {
 
 }
 
-module.export = UpdateParcelService;
+module.exports = UpdateParcelService;

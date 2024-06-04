@@ -1,12 +1,10 @@
 const UserAuthService = require("../service/user/UserAuthService");
 const CreateUserService = require("../service/user/CreateUserService");
 
-const userAuthService = new UserAuthService();
-const createUserService = new CreateUserService();
-
 class UserController {
-  constructor(userAuthService){
-    this.userAuthService = userAuthService
+  constructor() {
+    this.userAuthService = new UserAuthService();
+    this.createUserService = new CreateUserService();
   }
 
   async singIn(request, response) {
@@ -43,12 +41,12 @@ class UserController {
 
   async read(request, response) {
     try {
-      const user = await this.readUserService.findById(request.params.id)
-      return response.status(200).json(user)
+      const user = await this.readUserService.findById(request.params.id);
+      return response.status(200).json(user);
     } catch (err) {
       return response.status(409).json();
     }
   }
 }
 
-module.export = UserController;
+module.exports = UserController;

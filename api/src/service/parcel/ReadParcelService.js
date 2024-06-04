@@ -13,4 +13,4 @@ class ReadParcelService {
     }
 }
 
-module.export = ReadParcelService;
+module.exports = ReadParcelService;

@@ -13,4 +13,4 @@ class DeleteParcelService {
     }
 }
 
-module.export = DeleteParcelService;
+module.exports = DeleteParcelService;

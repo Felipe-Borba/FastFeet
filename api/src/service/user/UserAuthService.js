@@ -30,4 +30,4 @@ class UserAuthService {
   signOut() {}
 }
 
-module.export = UserAuthService;
+module.exports = UserAuthService;

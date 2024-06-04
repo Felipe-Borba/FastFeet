@@ -18,4 +18,4 @@ class CreateParcelService {
     }
 }
 
-module.export = CreateParcelService;
+module.exports = CreateParcelService;
