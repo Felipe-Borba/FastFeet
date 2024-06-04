@@ -1,0 +1,59 @@
+_type: export
+__export_format: 4
+__export_date: 2024-06-04T22:36:25.182Z
+__export_source: insomnia.desktop.app:v9.2.0
+resources:
+  - _id: req_ea393e2257aa488383f900a1bd1925cd
+    parentId: wrk_6dd2d0d9548840abb56823a80627dac0
+    modified: 1717540402659
+    created: 1717540171159
+    url: "{{ _.BASE_URL }}/hello-world"
+    name: New Request
+    description: ""
+    method: GET
+    body: {}
+    preRequestScript: ""
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.2.0
+    authentication: {}
+    metaSortKey: -1717540171159
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_6dd2d0d9548840abb56823a80627dac0
+    parentId: null
+    modified: 1717540107939
+    created: 1717540107939
+    name: Fast Feet
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: env_5ff140a47940c061125dfdd15bc8919f0ce43a11
+    parentId: wrk_6dd2d0d9548840abb56823a80627dac0
+    modified: 1717540372632
+    created: 1717540107940
+    name: Base Environment
+    data:
+      BASE_URL: http://localhost:3333
+    dataPropertyOrder:
+      "&":
+        - BASE_URL
+    color: null
+    isPrivate: false
+    metaSortKey: 1717540107940
+    _type: environment
+  - _id: jar_5ff140a47940c061125dfdd15bc8919f0ce43a11
+    parentId: wrk_6dd2d0d9548840abb56823a80627dac0
+    modified: 1717540107941
+    created: 1717540107941
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
