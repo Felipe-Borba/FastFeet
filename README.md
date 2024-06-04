@@ -27,7 +27,7 @@ O projeto Fast Feed é um sistema de gestão de entregas que visa facilitar o pr
 
 ### Requisitos não Funcionais 🚫
 
-- [ ] RNF01 O sistema deve garantir que as informações de login (CPF e Senha) sejam protegidas através de criptografia e medidas de segurança adequadas.
+- [x] RNF01 O sistema deve garantir que as informações de login (CPF e Senha) sejam protegidas através de criptografia e medidas de segurança adequadas.
 - [ ] RNF02 O sistema deve implementar um controle de acesso robusto para garantir que apenas usuários autorizados possam realizar operações específicas, de acordo com seu perfil de usuário (administrador ou entregador).
 - [ ] RNF03 O sistema deve ser capaz de lidar com um grande número de usuários e transações simultâneas, garantindo tempos de resposta rápidos e eficiência em todas as operações.
 - [ ] RNF04 O sistema deve ser altamente disponível, minimizando o tempo de inatividade e garantindo que os usuários possam acessá-lo quando necessário.
