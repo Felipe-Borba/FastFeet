@@ -8,8 +8,8 @@ const routes = Router();
 routes.use("/user", userRoutes);
 routes.use("/parcel", parcelRoutes);
 
-routes.get("/hello-world", (request, response) => {
-  response.json({ message: "Hello there" });
+routes.get("/wealth-check", (request, response) => {
+  response.status(200).json({ message: "Ok" });
 });
 
 module.exports = routes;

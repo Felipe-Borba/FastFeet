@@ -1,12 +1,12 @@
 const UserAuthService = require("../service/user/UserAuthService");
 const CreateUserService = require("../service/user/CreateUserService");
-const DeleteUserService = require("../service/user/DeleteUserService");
+// const DeleteUserService = require("../service/user/DeleteUserService");
 
 class UserController {
   constructor() {
     this.userAuthService = new UserAuthService();
     this.createUserService = new CreateUserService();
-    this.deleteUserService = new DeleteUserService();
+    // this.deleteUserService = new DeleteUserService();
   }
 
   async singIn(request, response) {
@@ -52,7 +52,7 @@ class UserController {
 
   async delete(request, response) {
     try {
-      const user = await this.deleteUserService.invoque(request.params.id)
+      // const user = await this.deleteUserService.invoque(request.params.id)
     } catch (err) {
       return response.status(500).json();
     }
