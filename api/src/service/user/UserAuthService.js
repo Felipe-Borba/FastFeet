@@ -26,8 +26,6 @@ class UserAuthService {
 
     return token;
   }
-
-  signOut() {}
 }
 
 module.exports = UserAuthService;

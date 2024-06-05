@@ -10,6 +10,7 @@ routes.post("/signIn", controller.singIn);
 
 routes.post("/signOut", ensureAuthenticated, controller.signOut);
 
+routes.delete("/:id", ensureAuthenticated, controller.delete);
 //CRUD
 
 // Exporta
