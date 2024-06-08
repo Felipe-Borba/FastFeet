@@ -1,21 +1,13 @@
-const CreateParcelService = require("../service/parcel/CreateParcelService");
-const UpdateParcelService = require("../service/parcel/UpdateParcelService");
-const DeleteParcelService = require("../service/parcel/DeleteParcelService");
-const ListParcelService = require("../service/parcel/CreateParcelService");
-const ReadParcelService = require("../service/parcel/ReadParcelService");
+const ParcelService = require("../service/ParcelService");
 
 class ParcelController {
   constructor() {
-    this.createParcelService = new CreateParcelService();
-    this.updateParcelService = new UpdateParcelService();
-    this.deleteParcelService = new DeleteParcelService();
-    this.listParcelService = new ListParcelService();
-    this.readParcelService = new ReadParcelService();
+    this.parcelService = new ParcelService();
   }
 
   async create(request, response) {
     try {
-      const parcel = await this.createParcelService.invoque(request.body);
+      const parcel = await this.parcelService.create(request.body);
 
       return response.status(200).json(parcel);
     } catch (err) {
@@ -25,7 +17,7 @@ class ParcelController {
 
   async update(request, response) {
     try {
-      const parcel = await this.updateParcelService.invoque(request.body);
+      const parcel = await this.parcelService.update(request.body);
 
       return response.status(200).json(parcel);
     } catch (err) {
@@ -35,7 +27,7 @@ class ParcelController {
 
   async delete(request, response) {
     try {
-      const parcel = await this.deleteParcelService.invoque(request.body);
+      const parcel = await this.parcelService.delete(request.body);
 
       return response.status(200).json(parcel);
     } catch (err) {
@@ -45,7 +37,7 @@ class ParcelController {
 
   async list(request, response) {
     try {
-      const parcel = await this.listParcelService.invoque(request.body);
+      const parcel = await this.parcelService.list(request.body);
 
       return response.status(200).json(parcel);
     } catch (err) {
@@ -55,7 +47,7 @@ class ParcelController {
 
   async read(request, response) {
     try {
-      const parcel = await this.readParcelService.findById(request.paramns.id);
+      const parcel = await this.parcelService.findById(request.params.id);
 
       return response.status(200).json(parcel);
     } catch (err) {
