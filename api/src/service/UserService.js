@@ -73,3 +73,5 @@ class UserService {
     return token;
   }
 }
+
+module.exports = UserService;
