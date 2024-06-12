@@ -45,7 +45,7 @@ class ParcelController {
     }
   }
 
-  async read(request, response) {
+  async findById(request, response) {
     try {
       const parcel = await this.parcelService.findById(request.params.id);
 

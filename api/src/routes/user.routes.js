@@ -7,11 +7,11 @@ const controller = new UserController();
 
 // Rotas
 routes.post("/signIn", controller.singIn);
-
 routes.post("/signOut", ensureAuthenticated, controller.signOut);
-
+routes.post("/", ensureAuthenticated, controller.create);
+routes.get("/:id", ensureAuthenticated, controller.findById);
+routes.get("/", ensureAuthenticated, controller.list);
 routes.delete("/:id", ensureAuthenticated, controller.delete);
-//CRUD
 
 // Exporta
 module.exports = routes;

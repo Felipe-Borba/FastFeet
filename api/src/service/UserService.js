@@ -72,6 +72,8 @@ class UserService {
 
     return token;
   }
+
+  async signOut() {}
 }
 
 module.exports = UserService;

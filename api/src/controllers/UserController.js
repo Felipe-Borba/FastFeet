@@ -48,7 +48,7 @@ class UserController {
     }
   }
 
-  async read(request, response) {
+  async findById(request, response) {
     try {
       const user = await this.userService.findById(request.params.id);
       return response.status(200).json(user);
