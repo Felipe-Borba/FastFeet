@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -17,31 +17,21 @@ model User {
   id       String   @id @default(uuid())
   cpf      String   @unique
   password String
-  role     UserRole @default(DELIVERY_MAN)
-  parcels Parcel[]
-}
-
-enum UserRole {
-  ADMIN
-  DELIVERY_MAN
-}
-
-enum DelivertType {
-  WITHDRAWAL
-  DELIVERY
+  role     String
+  parcels  Parcel[]
 }
 
 model Parcel {
-  id String @id @default(uuid())
-  cep Int 
-  status String
+  id             String  @id @default(uuid())
+  cep            Int
+  status         String
   codigorastreio String
-  tipoEntrega DelivertType @default(DELIVERY)
-  responsible User? @relation(fields: [responsibleId], references: [id])
-  responsibleId String?
+  tipoEntrega    String
+  responsible    User?   @relation(fields: [responsibleId], references: [id])
+  responsibleId  String?
 }
 
 model Recipient {
-  id String @id @default(uuid())
+  id   String @id @default(uuid())
   name String
 }
