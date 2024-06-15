@@ -1,16 +1,12 @@
 const UserService = require("../service/UserService");
 
-
+const userService = new UserService();
 class UserController {
-  constructor() {
-    this.userService = new UserService();
-  }
-
   async singIn(request, response) {
     try {
       const { cpf, password } = request.body;
 
-      const token = await this.userService.singIn(cpf, password);
+      const token = await userService.singIn(cpf, password);
 
       response.json(token);
     } catch (err) {
@@ -30,10 +26,11 @@ class UserController {
 
   async create(request, response) {
     try {
-      const user = await this.userService.create(request.body);
+      const user = await userService.create(request.body);
 
       return response.status(200).json(user);
     } catch (err) {
+      console.log(err);
       return response.status(409).json();
     }
   }
@@ -43,7 +40,7 @@ class UserController {
       const users = await this.userService.list();
 
       return response.status(200).json(user);
-    } catch(err) {
+    } catch (err) {
       return response.status(500).json();
     }
   }
