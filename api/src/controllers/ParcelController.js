@@ -1,23 +1,24 @@
 const ParcelService = require("../service/ParcelService");
 
+const parcelService = new ParcelService();
+
 class ParcelController {
-  constructor() {
-    this.parcelService = new ParcelService();
-  }
 
   async create(request, response) {
     try {
-      const parcel = await this.parcelService.create(request.body);
-
+      console.log("oi")
+      const parcel = await parcelService.create(request.body);
+      
       return response.status(200).json(parcel);
     } catch (err) {
+      console.log(err)
       return response.status(409).json();
     }
   }
 
   async update(request, response) {
     try {
-      const parcel = await this.parcelService.update(request.body);
+      const parcel = await parcelService.update(request.body);
 
       return response.status(200).json(parcel);
     } catch (err) {
@@ -27,7 +28,7 @@ class ParcelController {
 
   async delete(request, response) {
     try {
-      const parcel = await this.parcelService.delete(request.body);
+      const parcel = await parcelService.delete(request.body);
 
       return response.status(200).json(parcel);
     } catch (err) {
@@ -37,7 +38,7 @@ class ParcelController {
 
   async list(request, response) {
     try {
-      const parcel = await this.parcelService.list(request.body);
+      const parcel = await parcelService.list(request.body);
 
       return response.status(200).json(parcel);
     } catch (err) {
@@ -47,7 +48,7 @@ class ParcelController {
 
   async findById(request, response) {
     try {
-      const parcel = await this.parcelService.findById(request.params.id);
+      const parcel = await parcelService.findById(request.params.id);
 
       return response.status(200).json(parcel);
     } catch (err) {

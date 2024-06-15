@@ -1,24 +1,25 @@
 const { PrismaClient } = require("@prisma/client");
 
+const prisma = new PrismaClient();
+
 class ParcelService {
-  constructor() {
-    this.prisma = new PrismaClient();
-  }
 
   async create({ cep, status, codigorastreio, tipoEntrega }) {
-    const parcel = await this.prisma.parcel.create({
+    const parcel = await prisma.parcel.create({
       data: {
-        cep,
+        cep: +cep,
         status,
         codigorastreio,
         tipoEntrega,
       },
     });
+    console.log(parcel)
     return parcel;
   }
 
+
   async delete({ id }) {
-    const parcel = await this.prisma.parcel.delete({
+    const parcel = await prisma.parcel.delete({
       where: {
         id,
       },
@@ -27,12 +28,12 @@ class ParcelService {
   }
 
   async list() {
-    const parcel = await this.prisma.parcel.findMany();
+    const parcel = await prisma.parcel.findMany();
     return parcel;
   }
 
   async findById(id) {
-    const parcel = await this.prisma.parcel.findUnique({
+    const parcel = await prisma.parcel.findUnique({
       where: {
         id,
       },
