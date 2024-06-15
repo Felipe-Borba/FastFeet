@@ -1,4 +1,5 @@
 import Header from "../../components/header";
+import { Button } from "@mui/base/Button";
 import "./home.css";
 
 export default function Home() {
@@ -6,8 +7,8 @@ export default function Home() {
     <div id="home">
       <div className="header">
         <Header />
+        <Button />
       </div>
     </div>
-
   );
 }
