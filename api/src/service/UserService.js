@@ -4,9 +4,10 @@ const { sign } = require("jsonwebtoken");
 const prisma = new PrismaClient();
 
 class UserService {
-  async create({ cpf, password, role }) {
+  async create({ name, cpf, password, role }) {
     const user = await prisma.user.create({
       data: {
+        name,
         cpf,
         password,
         role,

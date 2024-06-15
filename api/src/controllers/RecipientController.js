@@ -1,10 +1,7 @@
 const RecipientService = require("../service/RecipientService");
+const recipientService = new RecipientService();
 
 class RecipientController {
-  constructor() {
-    recipientService = new RecipientService();
-  }
-
   async create(request, response) {
     try {
       const recipient = await recipientService.create(request.body);

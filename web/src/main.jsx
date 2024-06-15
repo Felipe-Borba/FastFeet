@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import CreateParcel from "./pages/parcelCreate";
 import "./index.css";
+import UserCreate from "./pages/userCreate";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     path: "/create-parcel",
     element: <CreateParcel />,
   },
+  {
+    path: "/user-create",
+    element: <UserCreate />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
