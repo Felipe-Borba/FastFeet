@@ -16,7 +16,7 @@ class UserController {
 
   async signOut(request, response) {
     try {
-      await this.userService.signOut();
+      await userService.signOut();
 
       return response.status(204);
     } catch (err) {
@@ -37,7 +37,7 @@ class UserController {
 
   async list(request, response) {
     try {
-      const users = await this.userService.list();
+      const users = await userService.list();
 
       return response.status(200).json(user);
     } catch (err) {
@@ -47,7 +47,7 @@ class UserController {
 
   async findById(request, response) {
     try {
-      const user = await this.userService.findById(request.params.id);
+      const user = await userService.findById(request.params.id);
       return response.status(200).json(user);
     } catch (err) {
       return response.status(409).json();
@@ -56,7 +56,7 @@ class UserController {
 
   async delete(request, response) {
     try {
-      const user = await this.userService.delete({ id: request.params.id });
+      const user = await userService.delete({ id: request.params.id });
 
       return response.status(200).json(user);
     } catch (err) {

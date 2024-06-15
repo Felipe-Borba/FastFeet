@@ -2,12 +2,12 @@ const RecipientService = require("../service/RecipientService");
 
 class RecipientController {
   constructor() {
-    this.recipientService = new RecipientService();
+    recipientService = new RecipientService();
   }
 
   async create(request, response) {
     try {
-      const recipient = await this.recipientService.create(request.body);
+      const recipient = await recipientService.create(request.body);
 
       return response.status(200).json(recipient);
     } catch (err) {
@@ -17,7 +17,7 @@ class RecipientController {
 
   async update(request, response) {
     try {
-      const recipient = await this.recipientService.update(request.body);
+      const recipient = await recipientService.update(request.body);
 
       return response.status(200).json(recipient);
     } catch (err) {
@@ -27,7 +27,7 @@ class RecipientController {
 
   async delete(request, response) {
     try {
-      const recipient = await this.recipientService.delete(request.params);
+      const recipient = await recipientService.delete(request.params);
 
       return response.status(200).json(recipient);
     } catch (err) {
@@ -37,7 +37,7 @@ class RecipientController {
 
   async list(request, response) {
     try {
-      const recipients = await this.recipientService.list();
+      const recipients = await recipientService.list();
 
       return response.status(200).json(recipients);
     } catch (err) {

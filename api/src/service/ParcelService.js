@@ -42,7 +42,7 @@ class ParcelService {
   }
 
   async update({ id, cep, status, codigorastreio, tipoEntrega }) {
-    const parcel = await this.prisma.parcel.update({
+    const parcel = await prisma.parcel.update({
       where: {
         id,
       },

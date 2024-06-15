@@ -16,7 +16,7 @@ class UserService {
   }
 
   async delete({ id }) {
-    const user = await this.prisma.user.delete({
+    const user = await prisma.user.delete({
       where: {
         id,
       },
@@ -25,17 +25,17 @@ class UserService {
   }
 
   async list() {
-    const users = await this.prisma.user.findMany();
+    const users = await prisma.user.findMany();
     return users;
   }
 
   async read() {
-    const user = await this.prisma.user.findUnique({ where: { id } });
+    const user = await prisma.user.findUnique({ where: { id } });
     return user;
   }
 
   async update({ id, name }) {
-    const user = await this.prisma.user.update({
+    const user = await prisma.user.update({
       where: {
         id,
       },

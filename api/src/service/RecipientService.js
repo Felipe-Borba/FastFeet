@@ -6,7 +6,7 @@ class RecipientService {
   }
 
   async create({ name }) {
-    const recipient = await this.prisma.recipient.create({
+    const recipient = await prisma.recipient.create({
       data: {
         name,
       },
@@ -15,7 +15,7 @@ class RecipientService {
   }
 
   async delete({ id }) {
-    const recipient = await this.prisma.recipient.delete({
+    const recipient = await prisma.recipient.delete({
       where: {
         id,
       },
@@ -24,12 +24,12 @@ class RecipientService {
   }
 
   async list() {
-    const recipient = await this.prisma.recipient.findMany();
+    const recipient = await prisma.recipient.findMany();
     return recipient;
   }
 
   async update({ id, name }) {
-    const recipient = await this.prisma.recipient.update({
+    const recipient = await prisma.recipient.update({
       where: {
         id,
       },
