@@ -31,7 +31,8 @@ class UserService {
   }
 
   async list() {
-    const user = await this.prisma.user.findMany();
+    const users = await this.prisma.user.findMany();
+    return users;
   }
 
   async read() {
