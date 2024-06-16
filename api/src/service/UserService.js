@@ -30,8 +30,9 @@ class UserService {
     return users;
   }
 
-  async read() {
+  async findById(id) {
     const user = await prisma.user.findUnique({ where: { id } });
+    delete user.password;
     return user;
   }
 

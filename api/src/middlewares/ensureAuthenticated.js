@@ -10,7 +10,7 @@ function ensureAuthenticated(request, response, next) {
     });
   }
 
-  const [, token] = auth.split(" ");
+  const [prefix, token] = auth.split(" ");
 
   try {
     const { user } = verify(token, process.env.AUTH_SECRET);

@@ -18,6 +18,7 @@ routes.post(
 routes.post("/signOut", ensureAuthenticated, controller.signOut);
 routes.post(
   "/",
+  ensureAuthenticated,
   body("name").isString().optional(),
   body("cpf", "cpf é obrigatório").isString().notEmpty(),
   body("password", "password é obrigatório").isString().notEmpty(),

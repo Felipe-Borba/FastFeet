@@ -14,7 +14,7 @@ export default function Login() {
     try {
       const response = await api.post("/user/signIn", { cpf, password: senha });
       const token = response.data.token;
-      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      api.defaults.headers.common["authorization"] = `Bearer ${token}`;
       // console.log(response.data);
       navigate("/user/home");
     } catch (error) {
@@ -31,6 +31,7 @@ export default function Login() {
             Cpf
             <input value={cpf} onChange={(e) => setCpf(e.target.value)} />
           </label>
+
           <label>
             Senha
             <input value={senha} onChange={(e) => setSenha(e.target.value)} />

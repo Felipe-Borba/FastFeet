@@ -46,10 +46,15 @@ class UserController {
 
   async findById(request, response) {
     try {
-      const user = await userService.findById(request.params.id);
+      let user = null;
+      if (request.params.id == "me") {
+        user = await userService.findById(request.user.id);
+      } else {
+        user = await userService.findById(request.params.id);
+      }
       return response.status(200).json(user);
     } catch (err) {
-      return response.status(409).json();
+      return response.status(409).json(err.message);
     }
   }
 
