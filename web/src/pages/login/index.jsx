@@ -1,20 +1,22 @@
 import Header from "../../components/header";
 import { useState } from "react";
 import "./login.css";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 
 export default function Login() {
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await api.post("/user/signIn", { cpf, password: senha });
-      //TODO add header api.defaults.headers
-      // console.log(response.status);
+      const token = response.data.token;
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       // console.log(response.data);
-      //TODO redirecionar para a tela do usuário
+      navigate("/user/home");
     } catch (error) {
       alert("Usuário ou senha inválido");
     }

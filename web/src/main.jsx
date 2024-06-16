@@ -4,8 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import CreateParcel from "./pages/parcelCreate";
+import UserHome from "./pages/user/home";
+import UserCreate from "./pages/user/userCreate";
+
 import "./index.css";
-import UserCreate from "./pages/userCreate";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +25,11 @@ const router = createBrowserRouter([
   {
     path: "/user-create",
     element: <UserCreate />,
-  }
+  },
+  {
+    path: "/user/home",
+    element: <UserHome />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
