@@ -15,7 +15,6 @@ export default function Login() {
       const response = await api.post("/user/signIn", { cpf, password: senha });
       const token = response.data.token;
       api.defaults.headers.common["authorization"] = `Bearer ${token}`;
-      // console.log(response.data);
       navigate("/user/home");
     } catch (error) {
       alert("Usuário ou senha inválido");

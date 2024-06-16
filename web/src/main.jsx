@@ -19,11 +19,11 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/create-parcel",
+    path: "/parcel/create",
     element: <CreateParcel />,
   },
   {
-    path: "/user-create",
+    path: "/user/create",
     element: <UserCreate />,
   },
   {

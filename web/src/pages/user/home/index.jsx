@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../../../services/api";
 
@@ -7,7 +7,6 @@ const Page = () => {
 
   const fetch = async () => {
     const response = await api.get("/user/me");
-    console.log(response.data);
     setUser(response.data);
   };
 
@@ -17,10 +16,16 @@ const Page = () => {
 
   return (
     <div className="w-ful h-full">
-      <h2>{user?.name}</h2>
-      <nav>
-        <Link>Crate user</Link>
-      </nav>
+      <div className="bg-yellow-300 px-3 py-5">
+        <h2>Bem vindo {user?.name}</h2>
+      </div>
+      <div className="flex">
+        <nav className="p-3 flex flex-col gap-2 bg-yellow-300">
+          <Link to={"/user/create"}>Criar usuário</Link>
+          <Link to={"/parcel/create"}>Cadastrar uma encomenda</Link>
+        </nav>
+        <div>tabela de produtos</div>
+      </div>
     </div>
   );
 };

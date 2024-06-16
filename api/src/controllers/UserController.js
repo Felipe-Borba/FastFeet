@@ -18,9 +18,9 @@ class UserController {
     try {
       await userService.signOut();
 
-      return response.status(204);
+      return response.status(204).json();
     } catch (err) {
-      return response.status(403).json();
+      return response.status(403).json(err.message);
     }
   }
 
@@ -38,9 +38,9 @@ class UserController {
     try {
       const users = await userService.list();
 
-      return response.status(200).json(user);
+      return response.status(200).json(users);
     } catch (err) {
-      return response.status(500).json();
+      return response.status(500).json(err.message);
     }
   }
 
@@ -60,11 +60,11 @@ class UserController {
 
   async delete(request, response) {
     try {
-      const user = await userService.delete({ id: request.params.id });
+      await userService.delete({ id: request.params.id });
 
-      return response.status(200).json(user);
+      return response.status(204).json();
     } catch (err) {
-      return response.status(500).json();
+      return response.status(500).json(err.message);
     }
   }
 }
