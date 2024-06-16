@@ -66,7 +66,8 @@ class UserService {
       expiresIn: 86400, // expira em 24 horas
     });
 
-    return token;
+    delete user.password;
+    return { token, user };
   }
 
   async signOut() {}

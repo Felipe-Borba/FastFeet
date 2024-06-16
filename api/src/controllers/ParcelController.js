@@ -3,15 +3,13 @@ const ParcelService = require("../service/ParcelService");
 const parcelService = new ParcelService();
 
 class ParcelController {
-
   async create(request, response) {
     try {
-      console.log("oi")
       const parcel = await parcelService.create(request.body);
-      
+
       return response.status(200).json(parcel);
     } catch (err) {
-      console.log(err)
+      console.log(err);
       return response.status(409).json();
     }
   }

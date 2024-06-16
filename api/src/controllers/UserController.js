@@ -6,11 +6,11 @@ class UserController {
     try {
       const { cpf, password } = request.body;
 
-      const token = await userService.singIn(cpf, password);
+      const data = await userService.singIn(cpf, password);
 
-      response.json(token);
+      response.json(data);
     } catch (err) {
-      return response.status(403).json();
+      return response.status(500).json(err.message);
     }
   }
 
@@ -30,8 +30,7 @@ class UserController {
 
       return response.status(200).json(user);
     } catch (err) {
-      console.log(err);
-      return response.status(409).json();
+      return response.status(500).json(err.message);
     }
   }
 
