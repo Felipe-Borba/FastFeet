@@ -1,7 +1,8 @@
 const { verify } = require("jsonwebtoken");
 
 function ensureAuthenticated(request, response, next) {
-  const authHeader = request.headers.authorization;
+  const authHeader =
+    request.headers.authorization || request.headers["Authorization"];
   const auth = authHeader;
 
   if (!auth) {
