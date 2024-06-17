@@ -8,7 +8,7 @@ class RecipientController {
 
       return response.status(200).json(recipient);
     } catch (err) {
-      return response.status(409).json();
+      return response.status(500).json(err.message);
     }
   }
 
@@ -18,17 +18,17 @@ class RecipientController {
 
       return response.status(200).json(recipient);
     } catch (err) {
-      return response.status(409).json();
+      return response.status(500).json(err.message);
     }
   }
 
   async delete(request, response) {
     try {
-      const recipient = await recipientService.delete(request.params);
+      await recipientService.delete(request.params);
 
-      return response.status(200).json(recipient);
+      return response.status(204).json();
     } catch (err) {
-      return response.status(409).json();
+      return response.status(500).json(err.message);
     }
   }
 
@@ -38,7 +38,7 @@ class RecipientController {
 
       return response.status(200).json(recipients);
     } catch (err) {
-      return response.status(500).json();
+      return response.status(500).json(err.message);
     }
   }
 }

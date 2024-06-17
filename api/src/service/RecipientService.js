@@ -1,10 +1,8 @@
 const { PrismaClient } = require("@prisma/client");
 
-class RecipientService {
-  constructor() {
-    this.prisma = new PrismaClient();
-  }
+const prisma = new PrismaClient();
 
+class RecipientService {
   async create({ name }) {
     const recipient = await prisma.recipient.create({
       data: {

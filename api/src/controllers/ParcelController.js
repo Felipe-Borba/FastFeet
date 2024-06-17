@@ -9,8 +9,7 @@ class ParcelController {
 
       return response.status(200).json(parcel);
     } catch (err) {
-      console.log(err);
-      return response.status(409).json();
+      return response.status(500).json(arr.message);
     }
   }
 
@@ -20,7 +19,7 @@ class ParcelController {
 
       return response.status(200).json(parcel);
     } catch (err) {
-      return response.status(409).json();
+      return response.status(500).json(arr.message);
     }
   }
 
@@ -30,17 +29,17 @@ class ParcelController {
 
       return response.status(200).json(parcel);
     } catch (err) {
-      return response.status(409).json();
+      return response.status(500).json(arr.message);
     }
   }
 
   async list(request, response) {
     try {
-      const parcel = await parcelService.list(request.body);
+      const parcel = await parcelService.list();
 
       return response.status(200).json(parcel);
     } catch (err) {
-      return response.status(409).json();
+      return response.status(500).json(arr.message);
     }
   }
 
@@ -50,7 +49,7 @@ class ParcelController {
 
       return response.status(200).json(parcel);
     } catch (err) {
-      return response.status(409).json();
+      return response.status(500).json(arr.message);
     }
   }
 }

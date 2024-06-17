@@ -23,6 +23,7 @@ const Page = () => {
         <nav className="p-3 flex flex-col gap-2 bg-yellow-300">
           <Link to={"/user/create"}>Criar usuário</Link>
           <Link to={"/parcel/create"}>Cadastrar uma encomenda</Link>
+          <Link to={"/recipient/list"}>Gerenciar destinatários</Link>
         </nav>
         <div>tabela de produtos</div>
       </div>
