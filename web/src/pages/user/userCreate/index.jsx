@@ -26,29 +26,32 @@ export default function UserCreate() {
     <main id="create-user">
       <Header />
       <section>
-        <form onSubmit={handleuserCreate}>
-          <label>
-            Nome
-            <input value={name} onChange={(e) => setName(e.target.value)} />
-          </label>
-          <label>
-            Cpf
-            <input value={cpf} onChange={(e) => setCpf(e.target.value)} />
-          </label>
-          <label>
-            Senha
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-          <label>
-            Cargo
-            <input value={role} onChange={(e) => setRole(e.target.value)} />
-          </label>
-
-          <button type="submit">Regiter</button>
-        </form>
+        <div id="UserCreateForm">
+          <form onSubmit={handleuserCreate}>
+            <label>
+              Nome
+              <input value={name} onChange={(e) => setName(e.target.value)} />
+            </label>
+            <label>
+              Cpf
+              <input value={cpf} onChange={(e) => setCpf(e.target.value)} />
+            </label>
+            <label>
+              Senha
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
+            <label>
+              Cargo
+              <input value={role} onChange={(e) => setRole(e.target.value)} />
+            </label>
+            <div className="button-container">
+              <button type="submit">Registrar</button>
+            </div>
+          </form>
+        </div>
       </section>
     </main>
   );
