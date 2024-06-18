@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Logo from "../../assets/FastFeetLogo2.png";
 import { api } from "../../services/api";
 import "./header.css";
 
@@ -15,11 +16,18 @@ export default function Header() {
   }, []);
 
   return (
-    <header id="header" className={"w-full"}>
-      {user?.name ? <p>Bem vindo {user?.name}</p> : null}
-      <div className="logo">
-        <img src=".\src\assets\FastFeetLogo2.png" alt="logo" />
+    <header
+      className={
+        "w-full flex bg-[#ffa500] h-[15vh] items-center justify-between p-2"
+      }
+    >
+      <div>{user?.name ? <p>Bem vindo {user?.name}</p> : null}</div>
+
+      <div>
+        <img src={Logo} alt="logo" className="h-[70px]" />
       </div>
+
+      <div></div>
     </header>
   );
 }

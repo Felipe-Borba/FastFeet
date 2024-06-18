@@ -3,11 +3,11 @@ import NavigationBar from "../NavigationBar";
 
 const LayoutMain = ({ selected, children }) => {
   return (
-    <div className="w-full h-full">
+    <div className="flex flex-col min-h-[100vh]">
       <Header />
-      <div className="flex">
+      <div className="flex h-[85vh]">
         <NavigationBar selected={selected} />
-        <main className="w-full h-full">{children}</main>
+        <main className="w-full min-h-full">{children}</main>
       </div>
     </div>
   );
