@@ -1,7 +1,8 @@
-import Header from "../../components/header";
+import Header from "../../../components/header";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./parcel.css";
-import { api } from "../../services/api";
+import { api } from "../../../services/api";
 
 export default function CreateParcel() {
   const [cep, setCep] = useState("");
@@ -54,7 +55,9 @@ export default function CreateParcel() {
             </label>
             <div className="button-container">
               <button type="submit">Criar Encomenda</button>
-              <button type="button" onClick={handleCancel}>Cancelar</button>
+              <Link to="/parcel">
+                <button type="button" onClick={handleCancel}>Cancelar</button>
+              </Link>
             </div>
           </form>
         </div>
