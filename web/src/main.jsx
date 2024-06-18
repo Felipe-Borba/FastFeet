@@ -3,11 +3,13 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
-import CreateParcel from "./pages/parcelCreate";
+import CreateParcel from "./pages/parcel/create/index";
 import UserHome from "./pages/user/home";
 import UserCreate from "./pages/user/userCreate";
 import RecipientList from "./pages/recipient/list";
 import RecipientCreate from "./pages/recipient/create";
+import ListParcel from "./pages/parcel/list";
+
 
 import "./index.css";
 import { AuthProvider } from "./context/Auth/auth";
@@ -24,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/parcel/create",
     element: <CreateParcel />,
+  },
+  {
+    path: "/parcel",
+    element: <ListParcel />,
   },
   {
     path: "/user/create",
