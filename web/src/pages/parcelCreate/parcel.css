@@ -1,0 +1,79 @@
+#create-parcel {
+  background-color: #fffef7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#create-parcel section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+}
+
+#parcel-form-container {
+  background-color: #ffffff;
+  border: 1px solid #d4d3cf;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 445px;
+  height: auto;
+}
+
+#parcel-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#parcel-form-container label {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  color: #333333;
+}
+
+#parcel-form-container input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #d4d3cf;
+  border-radius: 4px;
+  margin-top: 4px;
+  background-color: #f0f0ed;
+  color: #000000;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 30px; 
+}
+
+#parcel-form-container button {
+  padding: 10px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  flex: 1;
+}
+
+#parcel-form-container button:hover {
+  background-color: #555555;
+}
+
+#parcel-form-container button[type="button"] {
+  background-color: #888888;
+}
+
+#parcel-form-container button[type="button"]:hover {
+  background-color: #aaaaaa;
+}
