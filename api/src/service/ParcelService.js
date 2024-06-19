@@ -3,7 +3,6 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 class ParcelService {
-
   async create({ cep, status, codigorastreio, tipoEntrega }) {
     const parcel = await prisma.parcel.create({
       data: {
@@ -13,12 +12,11 @@ class ParcelService {
         tipoEntrega,
       },
     });
-    console.log(parcel)
     return parcel;
   }
 
-
   async delete({ id }) {
+    console.log(id);
     const parcel = await prisma.parcel.delete({
       where: {
         id,
