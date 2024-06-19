@@ -1,24 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/home";
+import { AuthProvider } from "./context/Auth/auth";
+import "./index.css";
 import Login from "./pages/login";
 import CreateParcel from "./pages/parcel/create/index";
+import ListParcel from "./pages/parcel/list";
+import RecipientCreate from "./pages/recipient/create";
+import RecipientList from "./pages/recipient/list";
 import UserList from "./pages/user/list";
 import UserCreate from "./pages/user/userCreate";
-import RecipientList from "./pages/recipient/list";
-import RecipientCreate from "./pages/recipient/create";
-import ListParcel from "./pages/parcel/list";
-import "./index.css";
-import { AuthProvider } from "./context/Auth/auth";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/login",
     element: <Login />,
   },
   {
