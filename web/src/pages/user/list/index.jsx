@@ -2,7 +2,7 @@ import LayoutMain from "../../../components/LayoutMain";
 
 const Page = () => {
   return (
-    <LayoutMain selected={"/parcel/list"}>
+    <LayoutMain selected={"/user/list"}>
       <div>tabela de usuários</div>
     </LayoutMain>
   );

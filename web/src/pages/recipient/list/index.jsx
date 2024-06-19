@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../../services/api";
 import { Link } from "react-router-dom";
+import LayoutMain from "../../../components/LayoutMain";
 
 const ListRecipient = () => {
   const [recipient, setRecipient] = useState([]);
@@ -28,10 +29,9 @@ const ListRecipient = () => {
   }, []);
 
   return (
-    <main>
+    <LayoutMain selected={"/recipient/list"}>
       <div className="flex gap-3">
         <h1>Destinatários</h1>
-        <Link to="/recipient/create">Cadastrar</Link>
       </div>
 
       <div className="flex flex-col gap-3">
@@ -52,7 +52,7 @@ const ListRecipient = () => {
           );
         })}
       </div>
-    </main>
+    </LayoutMain>
   );
 };
 

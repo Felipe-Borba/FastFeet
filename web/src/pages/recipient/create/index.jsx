@@ -15,19 +15,19 @@ const CreateRecipient = () => {
   };
 
   return (
-    <LayoutMain>
+    <LayoutMain selected={"/recipient/create"}>
       <div id="parcel-form-container">
-          <form onSubmit={handleCreate}>
-            <label>
-              Nome
-              <input value={name} onChange={(e) => setName(e.target.value)} />
-            </label>
-            <div className="button-container">
-              <button type="submit">Criar Encomenda</button>
-            </div>
-          </form>
-        </div>
-   </LayoutMain>
+        <form onSubmit={handleCreate}>
+          <label>
+            Nome
+            <input value={name} onChange={(e) => setName(e.target.value)} />
+          </label>
+          <div className="button-container">
+            <button type="submit">Criar Encomenda</button>
+          </div>
+        </form>
+      </div>
+    </LayoutMain>
   );
 };
 

@@ -2,8 +2,8 @@ import Header from "../../../components/header";
 import { useState } from "react";
 import "./user.css";
 import { api } from "../../../services/api";
-import Layout from '../../../components/LayoutMain'
-import InputSelect from '../../../components/inputSelect'
+import Layout from "../../../components/LayoutMain";
+import InputSelect from "../../../components/inputSelect";
 
 export default function UserCreate() {
   const [name, setName] = useState("");
@@ -25,7 +25,7 @@ export default function UserCreate() {
     console.log(99);
   };
   return (
-    <Layout id="create-user">
+    <Layout id="create-user" selected={"/user/create"}>
       <section>
         <div id="UserCreateForm">
           <form onSubmit={handleuserCreate}>

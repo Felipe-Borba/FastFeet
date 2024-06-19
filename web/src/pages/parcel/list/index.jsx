@@ -30,7 +30,7 @@ const ListParcel = () => {
   }, []);
 
   return (
-    <LayoutMain>
+    <LayoutMain selected={"/parcel/list"}>
       <div className="table-container">
         <table className="parcel-table">
           <thead>
