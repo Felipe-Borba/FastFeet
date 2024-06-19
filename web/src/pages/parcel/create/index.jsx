@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./parcel.css";
 import { api } from "../../../services/api";
+import LayoutMain from "../../../components/LayoutMain";
 
 export default function CreateParcel() {
   const [cep, setCep] = useState("");
@@ -32,10 +33,8 @@ export default function CreateParcel() {
   };
 
   return (
-    <main id="create-parcel">
-      <Header />
-      <section>
-        <div id="parcel-form-container">
+   <LayoutMain>
+      <div id="parcel-form-container">
           <form onSubmit={handleCreateParcel}>
             <label>
               CEP
@@ -61,7 +60,6 @@ export default function CreateParcel() {
             </div>
           </form>
         </div>
-      </section>
-    </main>
+   </LayoutMain>
   );
 }
