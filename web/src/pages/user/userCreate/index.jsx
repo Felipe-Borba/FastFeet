@@ -2,6 +2,7 @@ import Header from "../../../components/header";
 import { useState } from "react";
 import "./user.css";
 import { api } from "../../../services/api";
+import Layout from '../../../components/LayoutMain'
 
 export default function UserCreate() {
   const [name, setName] = useState("");
@@ -23,8 +24,7 @@ export default function UserCreate() {
     console.log(99);
   };
   return (
-    <main id="create-user">
-      <Header />
+    <Layout id="create-user">
       <section>
         <div id="UserCreateForm">
           <form onSubmit={handleuserCreate}>
@@ -53,6 +53,6 @@ export default function UserCreate() {
           </form>
         </div>
       </section>
-    </main>
+    </Layout>
   );
 }
