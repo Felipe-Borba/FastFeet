@@ -18,7 +18,7 @@ export default function Login() {
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       sessionStorage.setItem("@FastFeet:token", token);
 
-      navigate("/user/home");
+      navigate("/parcel/list");
     } catch (error) {
       alert("Usuário ou senha inválido");
     }
