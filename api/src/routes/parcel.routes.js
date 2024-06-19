@@ -9,7 +9,7 @@ const controller = new ParcelController();
 routes.post("/", controller.create);
 routes.get("/", ensureAuthenticated, controller.list);
 routes.put("/", ensureAuthenticated, controller.update);
-routes.delete("/", ensureAuthenticated, controller.delete);
+routes.delete("/:id", ensureAuthenticated, controller.delete);
 routes.get("/:id", ensureAuthenticated, controller.findById);
 
 // Exporta
