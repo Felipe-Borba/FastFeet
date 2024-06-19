@@ -37,7 +37,7 @@ export default function Login() {
             </label>
             <label>
               Senha
-              <input value={senha} onChange={(e) => setSenha(e.target.value)} />
+              <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} />
             </label>
             <div id="button-container">
               <button type="submit">Login</button>
