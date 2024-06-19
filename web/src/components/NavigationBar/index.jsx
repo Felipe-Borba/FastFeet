@@ -14,7 +14,7 @@ const NavigationBar = ({ selected }) => {
       <Button to={"/parcel/create"} selected={selected}>
         Cadastrar uma encomenda
       </Button>
-      <Button to={"/parcel/create"} selected={selected}>
+      <Button to={"/parcel/list"} selected={selected}>
         Gerenciar uma encomenda
       </Button>
 

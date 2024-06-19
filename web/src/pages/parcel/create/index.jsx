@@ -24,8 +24,7 @@ export default function CreateParcel() {
     }
   };
 
-  const handleCancel = () => {
-    // Handle the cancel action, e.g., clearing the form or redirecting to another page
+  const handleClear = () => {
     setCep("");
     setStatus("");
     setCodigoRastreio("");
@@ -53,10 +52,7 @@ export default function CreateParcel() {
               <input value={tipoEntrega} onChange={(e) => setTipoEntrega(e.target.value)} />
             </label>
             <div className="button-container">
-              <button type="submit">Criar Encomenda</button>
-              <Link to="/parcel">
-                <button type="button" onClick={handleCancel}>Cancelar</button>
-              </Link>
+              <button type="submit" onClick={handleClear}>Criar Encomenda</button>
             </div>
           </form>
         </div>
