@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./user.css";
 import { api } from "../../../services/api";
 import Layout from '../../../components/LayoutMain'
+import InputSelect from '../../../components/inputSelect'
 
 export default function UserCreate() {
   const [name, setName] = useState("");
@@ -33,7 +34,7 @@ export default function UserCreate() {
               <input value={name} onChange={(e) => setName(e.target.value)} />
             </label>
             <label>
-              Cpf
+              CPF
               <input value={cpf} onChange={(e) => setCpf(e.target.value)} />
             </label>
             <label>
@@ -43,10 +44,7 @@ export default function UserCreate() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
-            <label>
-              Cargo
-              <input value={role} onChange={(e) => setRole(e.target.value)} />
-            </label>
+            <InputSelect></InputSelect>
             <div className="button-container">
               <button type="submit">Registrar</button>
             </div>
