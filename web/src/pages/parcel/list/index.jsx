@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../../services/api";
-import "./listparcel.css"
-import LayoutMain from "../../../components/LayoutMain"
+import "./listparcel.css";
+import LayoutMain from "../../../components/LayoutMain";
 import "./listparcel.css";
 
 const ListParcel = () => {
@@ -35,10 +35,10 @@ const ListParcel = () => {
         <table className="parcel-table">
           <thead>
             <tr>
-            <th>CEP</th>
-            <th>Status</th>
-            <th>Código de Rastreio</th>
-            <th>Tipo de Entrega</th>
+              <th>CEP</th>
+              <th>Status</th>
+              <th>Código de Rastreio</th>
+              <th>Tipo de Entrega</th>
             </tr>
           </thead>
           <tbody>

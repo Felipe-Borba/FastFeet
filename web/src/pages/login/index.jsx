@@ -12,13 +12,13 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/parcel/list", { cpf, password: senha });
+      const response = await api.post("/user/signIn", { cpf, password: senha });
 
       const token = response.data.token;
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
       sessionStorage.setItem("@FastFeet:token", token);
 
-      navigate("/user/home");
+      navigate("/parcel/list");
     } catch (error) {
       alert("Usuário ou senha inválido");
     }
