@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { api } from "../../../services/api";
 import { Link } from "react-router-dom";
-import Header from "../../../components/header";
-import "./listparcel.css"
+import LayoutMain from "../../../components/LayoutMain";
+import { api } from "../../../services/api";
+import "./listparcel.css";
 
 const ListParcel = () => {
   const [parcel, setParcel] = useState([]);
@@ -30,8 +30,7 @@ const ListParcel = () => {
   }, []);
 
   return (
-    <main id="list-parcel">
-        <Header />
+    <LayoutMain selected={"/parcel/list"}>
       <div className="flex gap-3">
         <h1>Encomenda</h1>
         <Link to="/parcel/create">Cadastrar</Link>
@@ -55,7 +54,7 @@ const ListParcel = () => {
           );
         })}
       </div>
-    </main>
+    </LayoutMain>
   );
 };
 

@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header
       className={
-        "w-full flex bg-[#ffa500] h-[15vh] items-center justify-between p-2"
+        "w-full flex bg-[#ffa500] h-[15vh] items-center justify-between p-2 px-5"
       }
     >
       <div>{user?.name ? <p>Bem vindo {user?.name}</p> : null}</div>

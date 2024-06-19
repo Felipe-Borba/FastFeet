@@ -7,7 +7,9 @@ const LayoutMain = ({ selected, children }) => {
       <Header />
       <div className="flex h-[85vh]">
         <NavigationBar selected={selected} />
-        <main className="w-full min-h-full">{children}</main>
+        <main className="w-full min-h-full flex items-center justify-center">
+          {children}
+        </main>
       </div>
     </div>
   );
