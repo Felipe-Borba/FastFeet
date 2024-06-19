@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import LayoutMain from "../../../components/LayoutMain";
 import { api } from "../../../services/api";
+import "./listparcel.css"
+import LayoutMain from "../../../components/LayoutMain"
 import "./listparcel.css";
 
 const ListParcel = () => {
@@ -30,29 +30,35 @@ const ListParcel = () => {
   }, []);
 
   return (
-    <LayoutMain selected={"/parcel/list"}>
-      <div className="flex gap-3">
-        <h1>Encomenda</h1>
-        <Link to="/parcel/create">Cadastrar</Link>
-      </div>
-
-      <div className="flex flex-col gap-3">
-        {parcel.map((a) => {
-          return (
-            <div
-              key={a.id}
-              className="bg-gray-500 flex gap-4 p-2 justify-between"
-            >
-              {a.name}
-              <button
-                className="bg-red-500 p-1 rounded-md"
-                onClick={() => deleteParcel(a.id)}
-              >
-                delete
-              </button>
-            </div>
-          );
-        })}
+    <LayoutMain>
+      <div className="table-container">
+        <table className="parcel-table">
+          <thead>
+            <tr>
+            <th>CEP</th>
+            <th>Status</th>
+            <th>Código de Rastreio</th>
+            <th>Tipo de Entrega</th>
+            </tr>
+          </thead>
+          <tbody>
+            {parcel.map((a) => (
+              <tr key={a.id}>
+                <td>{a.name}</td>
+                <td>{a.id}</td>
+                <td>{new Date(a.createdAt).toLocaleDateString()}</td>
+                <td>
+                  <button
+                    className="bg-red-500 p-1 rounded-md"
+                    onClick={() => deleteParcel(a.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </LayoutMain>
   );
