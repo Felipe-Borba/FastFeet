@@ -12,7 +12,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/user/signIn", { cpf, password: senha });
+      const response = await api.post("/parcel/list", { cpf, password: senha });
 
       const token = response.data.token;
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
