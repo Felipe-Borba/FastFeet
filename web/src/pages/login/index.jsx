@@ -27,20 +27,23 @@ export default function Login() {
   return (
     <main id="login">
       <Header />
+      <h1 className="titulo-principal">Bem-vindo de volta!</h1>
       <section>
-        <form onSubmit={handleLogin}>
-          <label>
-            Cpf
-            <input value={cpf} onChange={(e) => setCpf(e.target.value)} />
-          </label>
-
-          <label>
-            Senha
-            <input value={senha} onChange={(e) => setSenha(e.target.value)} />
-          </label>
-
-          <button type="submit">Login</button>
-        </form>
+        <div id="LoginForm">
+          <form onSubmit={handleLogin}>
+            <label>
+              CPF
+              <input value={cpf} onChange={(e) => setCpf(e.target.value)} />
+            </label>
+            <label>
+              Senha
+              <input value={senha} onChange={(e) => setSenha(e.target.value)} />
+            </label>
+            <div id="button-container">
+              <button type="submit">Login</button>
+            </div>
+          </form>
+        </div>
       </section>
     </main>
   );
