@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../../services/api";
 import "./listparcel.css"
 import LayoutMain from "../../../components/LayoutMain"
+import "./listparcel.css";
 
 const ListParcel = () => {
   const [parcel, setParcel] = useState([]);
