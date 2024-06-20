@@ -33,7 +33,10 @@ export default function Login() {
           <form onSubmit={handleLogin}>
             <label>
               CPF
-              <input value={cpf} onChange={(e) => setCpf(e.target.value)} />
+              <input value={cpf} onChange={(e) => setCpf(e.target.value)}
+              required="required" pattern="[0-9]+$"
+              title="(Apenas números são aceitos no campo CPF)"
+              />
             </label>
             <label>
               Senha
