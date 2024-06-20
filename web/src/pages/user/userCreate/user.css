@@ -7,6 +7,13 @@
     
 }
 
+.titulo-principal {
+    font-family: inherit;
+    font-weight: bold;
+    text-align: center;
+    font-size: 3em;
+    border-radius: 10px;
+  }
 #create-user section {
     display: flex;
     flex-direction: column;

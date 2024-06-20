@@ -27,6 +27,7 @@ export default function UserCreate() {
   return (
     <Layout id="create-user" selected={"/user/create"}>
       <section>
+        <h1 className="titulo-principal">Criar usuário</h1>
         <div id="UserCreateForm">
           <form onSubmit={handleuserCreate}>
             <label>
