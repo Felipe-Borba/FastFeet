@@ -20,7 +20,7 @@ export default function UserCreate() {
       // console.log(response.data);
       //TODO redirecionar para a tela do usuário
     } catch (error) {
-      alert("Algum erro");
+      alert("Erro no cadastro!");
     }
     console.log(99);
   };
@@ -32,11 +32,16 @@ export default function UserCreate() {
           <form onSubmit={handleuserCreate}>
             <label>
               Nome
-              <input value={name} onChange={(e) => setName(e.target.value)} />
+              <input value={name} onChange={(e) => setName(e.target.value)} 
+              type="text"
+              pattern="[A-Za-zÀ-ÿ\s]+"
+              title="(Apenas letras são aceitos no campo Nome"/>
             </label>
             <label>
               CPF
-              <input value={cpf} onChange={(e) => setCpf(e.target.value)} />
+              <input value={cpf} onChange={(e) => setCpf(e.target.value)}
+                required="required" pattern="[0-9]+$"
+                title="(Apenas números são aceitos no campo CPF)" />
             </label>
             <label>
               Senha
