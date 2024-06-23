@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { api } from "../../services/api";
-import { useNavigate } from "react-router-dom";
 
 const AuthCtx = createContext(null > null);
 
@@ -15,16 +15,37 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const navigate = useNavigate();
+  const [token, setToken] = useState("");
+
+  const apiObserver = () => {
+    api.interceptors.response.use(
+      (response) => {
+        return response;
+      },
+      (error) => {
+        console.log(error);
+        return Promise.reject(error);
+      }
+    );
+  };
 
   useEffect(() => {
-    const token = localStorage.getItem("@FastFeet:token");
     if (token) {
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
     } else {
-      navigate("/", { replace: true });
+      api.defaults.headers.common.Authorization = null;
     }
-  }, [navigate]);
+  }, [token]);
+
+  useEffect(() => {
+    console.log(children);
+    apiObserver();
+    setToken(localStorage.getItem("@FastFeet:token"));
+  }, []);
+
+  if (!token) {
+    return <Navigate to="/" replace />;
+  }
 
   return <AuthCtx.Provider value={{}}>{children}</AuthCtx.Provider>;
 }

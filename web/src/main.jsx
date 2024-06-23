@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AuthProvider } from "./context/Auth/auth";
+import Context from "./context";
 import "./index.css";
 import Login from "./pages/login";
 import CreateParcel from "./pages/parcel/create/index";
@@ -13,39 +13,42 @@ import UserCreate from "./pages/user/userCreate";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Login />,
-  },
-  {
-    path: "/parcel/create",
-    element: <CreateParcel />,
-  },
-  {
-    path: "/parcel/list",
-    element: <ListParcel />,
-  },
-  {
-    path: "/user/create",
-    element: <UserCreate />,
-  },
-  {
-    path: "/user/list",
-    element: <UserList />,
-  },
-  {
-    path: "/recipient/list",
-    element: <RecipientList />,
-  },
-  {
-    path: "/recipient/create",
-    element: <RecipientCreate />,
+    element: <Context />,
+    children: [
+      {
+        path: "/",
+        element: <Login />,
+      },
+      {
+        path: "/parcel/create",
+        element: <CreateParcel />,
+      },
+      {
+        path: "/parcel/list",
+        element: <ListParcel />,
+      },
+      {
+        path: "/user/create",
+        element: <UserCreate />,
+      },
+      {
+        path: "/user/list",
+        element: <UserList />,
+      },
+      {
+        path: "/recipient/list",
+        element: <RecipientList />,
+      },
+      {
+        path: "/recipient/create",
+        element: <RecipientCreate />,
+      },
+    ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <AuthProvider />
-    </RouterProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
