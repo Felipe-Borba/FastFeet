@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 const NavigationBar = ({ selected }) => {
   return (
-    <navigation className="p-5 flex flex-col gap-2 h-full bg-gray-400">
+    <nav className="p-5 flex flex-col gap-2 h-full bg-gray-400">
       <Button to={"/user/create"} selected={selected}>
         Criar usuário
       </Button>
@@ -24,7 +24,7 @@ const NavigationBar = ({ selected }) => {
       <Button to={"/recipient/list"} selected={selected}>
         Gerenciar destinatários
       </Button>
-    </navigation>
+    </nav>
   );
 };
 
