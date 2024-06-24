@@ -84,7 +84,7 @@ const ListRecipient = () => {
                             Depois de atualizar o usuário clique em salvar
                           </DialogDescription>
                         </DialogHeader>
-                        <UserForm formId={"update"} user={item} />
+                        <RecipientForm formId={"update"} user={item} />
                         <DialogFooter>
                           <DialogClose>
                             <Button>Cancelar</Button>
@@ -108,7 +108,7 @@ const ListRecipient = () => {
 
 export default ListRecipient;
 
-const UserForm = ({ user, formId, preventDefault = false }) => {
+const RecipientForm = ({ user, formId, preventDefault = false }) => {
   const [name, setName] = useState(user?.name ?? "");
 
   const updateUser = async () => {
