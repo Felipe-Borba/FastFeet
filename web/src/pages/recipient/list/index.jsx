@@ -1,7 +1,26 @@
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/src/components/ui/alert-dialog";
+import { Button } from "@/src/components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/src/components/ui/table";
 import { useEffect, useState } from "react";
-import { api } from "../../../services/api";
-import { Link } from "react-router-dom";
 import LayoutMain from "../../../components/LayoutMain";
+import { api } from "../../../services/api";
 
 const ListRecipient = () => {
   const [recipient, setRecipient] = useState([]);
@@ -30,28 +49,50 @@ const ListRecipient = () => {
 
   return (
     <LayoutMain selected={"/recipient/list"}>
-      <div className="flex gap-3">
-        <h1>Destinatários</h1>
-      </div>
+      <h1>Destinatários</h1>
 
-      <div className="flex flex-col gap-3">
-        {recipient.map((a) => {
-          return (
-            <div
-              key={a.id}
-              className="bg-gray-500 flex gap-4 p-2 justify-between"
-            >
-              {a.name}
-              <button
-                className="bg-red-500 p-1 rounded-md"
-                onClick={() => deleteRecipient(a.id)}
-              >
-                delete
-              </button>
-            </div>
-          );
-        })}
-      </div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>nome</TableHead>
+            <TableHead>action</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {recipient.map((item) => {
+            return (
+              <TableRow key={item.id}>
+                <TableCell>{item.name}</TableCell>
+                <TableCell>
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button variant="destructive">Delete</Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This action cannot be undone.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={() => {
+                            deleteRecipient(item.id);
+                          }}
+                        >
+                          Continue
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
     </LayoutMain>
   );
 };
