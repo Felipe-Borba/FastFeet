@@ -47,13 +47,13 @@ export default function UserCreate() {
       <Card>
         <CardHeader>
           <CardTitle>Usuário</CardTitle>
-          <CardDescription>Crie um novo destinatário</CardDescription>
+          <CardDescription>Crie um novo usuário</CardDescription>
         </CardHeader>
         <CardContent>
           <form
             id="form"
             onSubmit={handleUserCreate}
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-4 w-80"
           >
             <Label>
               Nome

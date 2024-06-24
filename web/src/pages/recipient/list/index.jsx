@@ -1,15 +1,4 @@
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/src/components/ui/alert-dialog";
-import { Button } from "@/src/components/ui/button";
+import { DeleteButton } from "@/src/components/DeleteButton";
 import {
   Table,
   TableBody,
@@ -54,8 +43,8 @@ const ListRecipient = () => {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>nome</TableHead>
-            <TableHead>action</TableHead>
+            <TableHead>Nome</TableHead>
+            <TableHead>Opção</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -64,29 +53,11 @@ const ListRecipient = () => {
               <TableRow key={item.id}>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>
-                  <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                      <Button variant="destructive">Delete</Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                        <AlertDialogDescription>
-                          This action cannot be undone.
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction
-                          onClick={() => {
-                            deleteRecipient(item.id);
-                          }}
-                        >
-                          Continue
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
+                  <DeleteButton
+                    onContinue={() => {
+                      deleteRecipient(item.id);
+                    }}
+                  />
                 </TableCell>
               </TableRow>
             );
