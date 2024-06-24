@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
 
   const apiMiddlewares = () => {
     api.interceptors.response.use(null, (error) => {
-      if (error.response.status) {
+      if (error.response.status === 403) {
         navigate("/", { replace: true });
       }
       return Promise.reject(error);
