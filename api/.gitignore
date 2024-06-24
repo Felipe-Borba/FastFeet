@@ -131,3 +131,4 @@ dist
 
 # custom
 .env
+*.db

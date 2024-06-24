@@ -1,37 +1,67 @@
-import Header from "../../../components/header";
+import { Button } from "@/src/components/ui/button";
+import { Input } from "@/src/components/ui/input";
+import { Label } from "@/src/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/src/components/ui/select";
 import { useState } from "react";
-import "./user.css";
-import { api } from "../../../services/api";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../../components/LayoutMain";
-import InputSelect from "../../../components/inputSelect";
+import { api } from "../../../services/api";
+import "./user.css";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/src/components/ui/card";
 
 export default function UserCreate() {
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const navigate = useNavigate();
 
-  const handleuserCreate = async (e) => {
+  const handleUserCreate = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/user", { name, cpf, password, role });
-      //TODO add header api.defaults.headers
-      console.log(response.status);
-      // console.log(response.data);
-      //TODO redirecionar para a tela do usuário
+      await api.post("/user", { name, cpf, password, role });
+      navigate("/user/list");
     } catch (error) {
+<<<<<<< HEAD
       alert("Erro no cadastro!");
+=======
+      console.log(error.message);
+      alert("Algum erro");
+>>>>>>> fdfac28bb130f5342dce94830fbc4eb5b55c7dcd
     }
-    console.log(99);
   };
+
   return (
     <Layout id="create-user" selected={"/user/create"}>
-      <section>
-        <h1 className="titulo-principal">Criar usuário</h1>
-        <div id="UserCreateForm">
-          <form onSubmit={handleuserCreate}>
-            <label>
+      <Card>
+        <CardHeader>
+          <CardTitle>Usuário</CardTitle>
+          <CardDescription>Crie um novo usuário</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form
+            id="form"
+            onSubmit={handleUserCreate}
+            className="flex flex-col gap-4 w-80"
+          >
+            <Label>
               Nome
+<<<<<<< HEAD
               <input value={name} onChange={(e) => setName(e.target.value)} 
               type="text"
               pattern="[A-Za-zÀ-ÿ\s]+"
@@ -44,19 +74,47 @@ export default function UserCreate() {
                 title="(Apenas números são aceitos no campo CPF)" />
             </label>
             <label>
+=======
+              <Input value={name} onChange={(e) => setName(e.target.value)} />
+            </Label>
+
+            <Label>
+              CPF
+              <Input value={cpf} onChange={(e) => setCpf(e.target.value)} />
+            </Label>
+
+            <Label>
+>>>>>>> fdfac28bb130f5342dce94830fbc4eb5b55c7dcd
               Senha
-              <input
+              <Input
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            </label>
-            <InputSelect></InputSelect>
-            <div className="button-container">
-              <button type="submit">Registrar</button>
-            </div>
+            </Label>
+
+            <Label>
+              Perfil
+              <Select value={role} onValueChange={setRole}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione um perfil" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Perfil</SelectLabel>
+                    <SelectItem value="admin">Admin</SelectItem>
+                    <SelectItem value="entregador">Entregador</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </Label>
           </form>
-        </div>
-      </section>
+        </CardContent>
+        <CardFooter>
+          <Button form="form" type="submit">
+            Cadastrar
+          </Button>
+        </CardFooter>
+      </Card>
     </Layout>
   );
 }
