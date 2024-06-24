@@ -3,6 +3,26 @@ import { api } from "../../../services/api";
 import "./listparcel.css";
 import LayoutMain from "../../../components/LayoutMain";
 import "./listparcel.css";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/src/components/ui/table";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/src/components/ui/alert-dialog";
+import { Button } from "@/src/components/ui/button";
 
 const ListParcel = () => {
   const [parcel, setParcel] = useState([]);
@@ -10,6 +30,7 @@ const ListParcel = () => {
   const fetch = async () => {
     try {
       const response = await api.get("/parcel");
+      console.log(response.data);
       setParcel(response.data);
     } catch (error) {
       console.log(error);
@@ -31,35 +52,54 @@ const ListParcel = () => {
 
   return (
     <LayoutMain selected={"/parcel/list"}>
-      <div className="table-container">
-        <table className="parcel-table">
-          <thead>
-            <tr>
-              <th>CEP</th>
-              <th>Status</th>
-              <th>Código de Rastreio</th>
-              <th>Tipo de Entrega</th>
-            </tr>
-          </thead>
-          <tbody>
-            {parcel.map((a) => (
-              <tr key={a.id}>
-                <td>{a.name}</td>
-                <td>{a.id}</td>
-                <td>{new Date(a.createdAt).toLocaleDateString()}</td>
-                <td>
-                  <button
-                    className="bg-red-500 p-1 rounded-md"
-                    onClick={() => deleteParcel(a.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>cep</TableHead>
+            <TableHead>status</TableHead>
+            <TableHead>Código de Rastreio</TableHead>
+            <TableHead>TipoEntrega</TableHead>
+            <TableHead>opção</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {parcel.map((item) => {
+            return (
+              <TableRow key={item.id}>
+                <TableCell>{item.cep}</TableCell>
+                <TableCell>{item.status}</TableCell>
+                <TableCell>{item.codigorastreio}</TableCell>
+                <TableCell>{item.tipoEntrega}</TableCell>
+                <TableCell>
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button variant="destructive">Delete</Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This action cannot be undone.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={() => {
+                            deleteParcel(item.id);
+                          }}
+                        >
+                          Continue
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
     </LayoutMain>
   );
 };

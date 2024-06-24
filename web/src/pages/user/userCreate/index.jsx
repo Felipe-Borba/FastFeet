@@ -72,7 +72,7 @@ export default function UserCreate() {
             </Select>
 
             <div className="button-container">
-              <Button type="submit">Registrar</Button>
+              <Button type="submit">Cadastrar</Button>
             </div>
           </form>
         </div>

@@ -58,7 +58,7 @@ export default function CreateParcel() {
           </label>
           <div className="button-container">
             <button type="submit" onClick={handleClear}>
-              Criar Encomenda
+              Cadastrar
             </button>
           </div>
         </form>
