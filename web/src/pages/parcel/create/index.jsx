@@ -51,11 +51,13 @@ export default function CreateParcel() {
           </label>
           <label>
             Tipo de Entrega
+            {/* TODO fazer um select */}
             <input
               value={tipoEntrega}
               onChange={(e) => setTipoEntrega(e.target.value)}
             />
           </label>
+          {/* TODO add um input para selecionar o responsável pela entrega */}
           <div className="button-container">
             <button type="submit" onClick={handleClear}>
               Cadastrar
