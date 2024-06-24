@@ -15,6 +15,14 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../../../components/LayoutMain";
 import { api } from "../../../services/api";
 import "./user.css";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/src/components/ui/card";
 
 export default function UserCreate() {
   const [name, setName] = useState("");
@@ -36,10 +44,17 @@ export default function UserCreate() {
 
   return (
     <Layout id="create-user" selected={"/user/create"}>
-      <section>
-        <h1 className="titulo-principal">Criar usuário</h1>
-        <div id="UserCreateForm">
-          <form onSubmit={handleUserCreate}>
+      <Card>
+        <CardHeader>
+          <CardTitle>Usuário</CardTitle>
+          <CardDescription>Crie um novo destinatário</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form
+            id="form"
+            onSubmit={handleUserCreate}
+            className="flex flex-col gap-3"
+          >
             <Label>
               Nome
               <Input value={name} onChange={(e) => setName(e.target.value)} />
@@ -58,25 +73,29 @@ export default function UserCreate() {
               />
             </Label>
 
-            <Select value={role} onValueChange={setRole}>
-              <SelectTrigger>
-                <SelectValue placeholder="Selecione um perfil" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Perfil</SelectLabel>
-                  <SelectItem value="admin">Admin</SelectItem>
-                  <SelectItem value="entregador">Entregador</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-
-            <div className="button-container">
-              <Button type="submit">Cadastrar</Button>
-            </div>
+            <Label>
+              Perfil
+              <Select value={role} onValueChange={setRole}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione um perfil" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Perfil</SelectLabel>
+                    <SelectItem value="admin">Admin</SelectItem>
+                    <SelectItem value="entregador">Entregador</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </Label>
           </form>
-        </div>
-      </section>
+        </CardContent>
+        <CardFooter>
+          <Button form="form" type="submit">
+            Cadastrar
+          </Button>
+        </CardFooter>
+      </Card>
     </Layout>
   );
 }
