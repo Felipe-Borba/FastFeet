@@ -1,11 +1,11 @@
 import { useAuth } from "@/src/context/Auth/auth";
-import Logo from "../../assets/FastFeetLogo2.png";
-import { LogoutButton } from "../LogoutButton";
-import "./header.css";
 import { twMerge } from "tailwind-merge";
+import Logo from "../../assets/FastFeetLogo2.png";
+import { Button } from "../ui/button";
+import "./header.css";
 
 export default function Header() {
-  const { currentUser, healthCheck } = useAuth();
+  const { currentUser, healthCheck, logout } = useAuth();
 
   return (
     <header
@@ -28,7 +28,13 @@ export default function Header() {
       </div>
 
       <div>
-        <LogoutButton />
+        <Button
+          onClick={async () => {
+            await logout();
+          }}
+        >
+          Logout
+        </Button>
       </div>
     </header>
   );

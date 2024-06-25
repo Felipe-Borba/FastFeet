@@ -43,6 +43,15 @@ export function AuthProvider({ children }) {
     navigate("/parcel/list");
   };
 
+  const logout = async () => {
+    await api.post("/user/signOut");
+    sessionStorage.removeItem("@FastFeet:token");
+    sessionStorage.removeItem("@FastFeet:user");
+    setCurrentUser();
+    api.defaults.headers.common.Authorization = undefined;
+    navigate("/");
+  };
+
   useEffect(() => {
     const id = setInterval(() => {
       api
@@ -78,7 +87,7 @@ export function AuthProvider({ children }) {
   }, [navigate]);
 
   return (
-    <AuthCtx.Provider value={{ login, currentUser, healthCheck }}>
+    <AuthCtx.Provider value={{ login, currentUser, healthCheck, logout }}>
       {children}
     </AuthCtx.Provider>
   );
