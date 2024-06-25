@@ -5,6 +5,16 @@ const prisma = new PrismaClient();
 
 class UserService {
   async create({ name, cpf, password, role }) {
+    const findUser = await prisma.user.findFirst({
+      where: {
+        cpf: cpf
+      }
+    })
+
+    if(findUser != null){
+      throw new Error("CPF ja cadastrado")
+    }
+
     const user = await prisma.user.create({
       data: {
         name,
@@ -36,13 +46,16 @@ class UserService {
     return user;
   }
 
-  async update({ id, name }) {
+  async update({ id, name, cpf, password, role }) {
     const user = await prisma.user.update({
       where: {
         id,
       },
       data: {
         name,
+        cpf,
+        password,
+        role
       },
     });
     return user;
@@ -71,7 +84,7 @@ class UserService {
     return { token, user };
   }
 
-  async signOut() {}
+  async signOut() { }
 }
 
 module.exports = UserService;

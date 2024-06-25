@@ -29,6 +29,15 @@ routes.post(
 routes.get("/:id", ensureAuthenticated, controller.findById);
 routes.get("/", ensureAuthenticated, controller.list);
 routes.delete("/:id", ensureAuthenticated, controller.delete);
-
+routes.put(
+  "/",
+  ensureAuthenticated,
+  body("name").isString().optional(),
+  body("cpf", "cpf é obrigatório").isString().notEmpty(),
+  body("password", "password é obrigatório").isString().notEmpty(),
+  body("role", "role é obrigatório").isIn(["admin", "entregador"]).notEmpty(),
+  validate,
+  controller.update
+)
 // Exporta
 module.exports = routes;

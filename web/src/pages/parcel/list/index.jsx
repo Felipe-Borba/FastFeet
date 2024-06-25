@@ -1,8 +1,4 @@
-import { useEffect, useState } from "react";
-import { api } from "../../../services/api";
-import "./listparcel.css";
-import LayoutMain from "../../../components/LayoutMain";
-import "./listparcel.css";
+import { DeleteButton } from "@/src/components/DeleteButton";
 import {
   Table,
   TableBody,
@@ -11,17 +7,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/src/components/ui/table";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/src/components/ui/alert-dialog";
+import { useEffect, useState } from "react";
+import LayoutMain from "../../../components/LayoutMain";
+import { api } from "../../../services/api";
 import { Button } from "@/src/components/ui/button";
 
 const ListParcel = () => {
@@ -40,6 +28,15 @@ const ListParcel = () => {
   const deleteParcel = async (id) => {
     try {
       await api.delete(`/parcel/${id}`);
+      await fetch();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deliveryParcel = async (id) => {
+    try {
+      await api.post(`/parcel/${id}/delivered`);
       await fetch();
     } catch (error) {
       console.log(error);
@@ -71,29 +68,22 @@ const ListParcel = () => {
                 <TableCell>{item.codigorastreio}</TableCell>
                 <TableCell>{item.tipoEntrega}</TableCell>
                 <TableCell>
-                  <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                      <Button variant="destructive">Delete</Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-                        <AlertDialogDescription>
-                          This action cannot be undone.
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction
-                          onClick={() => {
-                            deleteParcel(item.id);
-                          }}
-                        >
-                          Continue
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
+                  <div className="flex gap-2 justify-center">
+                    <DeleteButton
+                      onContinue={() => {
+                        deleteParcel(item.id);
+                      }}
+                    />
+                    {item.status !== "entregue" ? (
+                      <Button
+                        onClick={() => {
+                          deliveryParcel(item.id);
+                        }}
+                      >
+                        Entregar
+                      </Button>
+                    ) : null}
+                  </div>
                 </TableCell>
               </TableRow>
             );

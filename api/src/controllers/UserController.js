@@ -67,6 +67,17 @@ class UserController {
       return response.status(500).json(err.message);
     }
   }
+
+  async update(request, response) {
+    try {
+      const users = await userService.update(request.body);
+
+      return response.status(200).json(users);
+    } catch (err) {
+      console.log(err.message)
+      return response.status(500).json(err.message);
+    }
+  }
 }
 
 module.exports = UserController;

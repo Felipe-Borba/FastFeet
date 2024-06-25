@@ -37,8 +37,8 @@ export default function UserCreate() {
       await api.post("/user", { name, cpf, password, role });
       navigate("/user/list");
     } catch (error) {
-      console.log(error.message);
-      alert("Algum erro");
+      console.log(error);
+      alert(error.response.data);
     }
   };
 
