@@ -1,20 +1,10 @@
-import { useEffect, useState } from "react";
+import { useAuth } from "@/src/context/Auth/auth";
 import Logo from "../../assets/FastFeetLogo2.png";
-import { api } from "../../services/api";
-import "./header.css";
 import { LogoutButton } from "../LogoutButton";
+import "./header.css";
 
 export default function Header() {
-  const [user, setUser] = useState(null);
-
-  const fetch = async () => {
-    const response = await api.get("/user/me");
-    setUser(response.data);
-  };
-
-  useEffect(() => {
-    fetch();
-  }, []);
+  const { currentUser } = useAuth();
 
   return (
     <header
@@ -22,7 +12,9 @@ export default function Header() {
         "w-full flex bg-[#ffa500] h-[15vh] items-center justify-between p-2 px-5"
       }
     >
-      <div>{user?.name ? <p>Bem vindo {user?.name}</p> : null}</div>
+      <div>
+        {currentUser?.name ? <p>Bem vindo {currentUser?.name}</p> : null}
+      </div>
 
       <div>
         <img src={Logo} alt="logo" className="h-[70px]" />
