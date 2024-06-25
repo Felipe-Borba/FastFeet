@@ -1,70 +1,99 @@
+import SelectUser from "@/src/components/SelectUser";
+import { Button } from "@/src/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/src/components/ui/card";
+import { Input } from "@/src/components/ui/input";
+import { Label } from "@/src/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/src/components/ui/select";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LayoutMain from "../../../components/LayoutMain";
 import { api } from "../../../services/api";
-import "./parcel.css";
 
 export default function CreateParcel() {
   const [cep, setCep] = useState("");
-  const [status, setStatus] = useState("");
-  const [codigorastreio, setCodigoRastreio] = useState("");
-  const [tipoEntrega, setTipoEntrega] = useState("");
+  const [tipoEntrega, setTipoEntrega] = useState("padrao");
+  const [userId, setUserId] = useState();
+  const navigate = useNavigate();
 
   const handleCreateParcel = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/parcel/", {
-        cep,
-        status,
-        codigorastreio,
-        tipoEntrega,
-      });
+      // console.log({ cep, tipoEntrega, responsibleId: userId });
+      await api.post("/parcel", { cep, tipoEntrega, responsibleId: userId });
+
+      navigate("/parcel/list");
     } catch (error) {
+      // console.log(error.message);
       alert("Não foi possível cadastrar a encomenda");
     }
   };
 
-  const handleClear = () => {
-    setCep("");
-    setStatus("");
-    setCodigoRastreio("");
-    setTipoEntrega("");
-  };
-
   return (
     <LayoutMain selected={"/parcel/create"}>
-      <div id="parcel-form-container">
-        <form onSubmit={handleCreateParcel}>
-          <label>
-            CEP
-            <input value={cep} onChange={(e) => setCep(e.target.value)} />
-          </label>
-          <label>
-            Status
-            <input value={status} onChange={(e) => setStatus(e.target.value)} />
-          </label>
-          <label>
-            Código de Rastreio
-            <input
-              value={codigorastreio}
-              onChange={(e) => setCodigoRastreio(e.target.value)}
-            />
-          </label>
-          <label>
-            Tipo de Entrega
-            {/* TODO fazer um select */}
-            <input
-              value={tipoEntrega}
-              onChange={(e) => setTipoEntrega(e.target.value)}
-            />
-          </label>
-          {/* TODO add um input para selecionar o responsável pela entrega */}
-          <div className="button-container">
-            <button type="submit" onClick={handleClear}>
-              Cadastrar
-            </button>
-          </div>
-        </form>
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>Encomenda</CardTitle>
+          <CardDescription>Crie um nova encomenda</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form
+            id="form"
+            onSubmit={handleCreateParcel}
+            className="flex flex-col gap-4 w-80"
+          >
+            <Label>
+              CEP
+              <Input
+                type="number"
+                placeholder=""
+                alue={cep}
+                onChange={(e) => setCep(e.target.value)}
+              />
+            </Label>
+
+            <Label>
+              Tipo de Entrega
+              <Select value={tipoEntrega} onValueChange={setTipoEntrega}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione um tipo de entrega" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Perfil</SelectLabel>
+                    <SelectItem value="padrao">Padrão</SelectItem>
+                    <SelectItem value="retirada">Retirada</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </Label>
+
+            <Label>
+              Entregador
+              <SelectUser user={userId} setUser={setUserId} />
+            </Label>
+          </form>
+        </CardContent>
+        <CardFooter>
+          <Button form="form" type="submit">
+            Cadastrar
+          </Button>
+        </CardFooter>
+      </Card>
     </LayoutMain>
   );
 }

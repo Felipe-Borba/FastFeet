@@ -52,6 +52,16 @@ class ParcelController {
       return response.status(500).json(err.message);
     }
   }
+
+  async markAsDelivered(request, response) {
+    try {
+      const parcel = await parcelService.markAsDelivered(request.params.id);
+
+      return response.status(200).json(parcel);
+    } catch (err) {
+      return response.status(500).json(err.message);
+    }
+  }
 }
 
 module.exports = ParcelController;

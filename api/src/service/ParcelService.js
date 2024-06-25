@@ -1,15 +1,20 @@
 const { PrismaClient } = require("@prisma/client");
+const util = require("../utils");
 
 const prisma = new PrismaClient();
 
 class ParcelService {
-  async create({ cep, status, codigorastreio, tipoEntrega }) {
+  async create({ cep, tipoEntrega, responsibleId }) {
+    const codigorastreio = util.randomArray().join("");
+
+    // console.log({ cep, tipoEntrega, responsibleId, codigorastreio });
     const parcel = await prisma.parcel.create({
       data: {
         cep: +cep,
-        status,
+        status: "pendente",
         codigorastreio,
         tipoEntrega,
+        responsibleId,
       },
     });
     return parcel;
@@ -49,6 +54,16 @@ class ParcelService {
         status,
         codigorastreio,
         tipoEntrega,
+      },
+    });
+    return parcel;
+  }
+
+  async markAsDelivered(id) {
+    const parcel = await prisma.parcel.update({
+      where: { id },
+      data: {
+        status: "entregue",
       },
     });
     return parcel;
