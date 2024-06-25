@@ -35,12 +35,30 @@ export function AuthProvider({ children }) {
     sessionStorage.setItem("@FastFeet:token", token);
 
     setCurrentUser(response.data.user);
+    sessionStorage.setItem("@FastFeet:user", token);
     navigate("/parcel/list");
   };
 
   useEffect(() => {
-    const token = sessionStorage.getItem("@FastFeet:token");
+    const id = setInterval(() => {
+      //todo
+    }, 1000);
+
+    return () => {
+      clearInterval(id);
+    };
+  }, []);
+
+  useEffect(() => {
     apiMiddlewares();
+
+    const token = sessionStorage.getItem("@FastFeet:token");
+    const user = sessionStorage.getItem("@FastFeet:user");
+
+    if (user) {
+      setCurrentUser(user);
+    }
+
     if (token) {
       api.defaults.headers.common.Authorization = `Bearer ${token}`;
     } else {
