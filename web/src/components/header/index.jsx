@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Logo from "../../assets/FastFeetLogo2.png";
 import { api } from "../../services/api";
 import "./header.css";
+import { LogoutButton } from "../LogoutButton";
 
 export default function Header() {
   const [user, setUser] = useState(null);
@@ -27,7 +28,9 @@ export default function Header() {
         <img src={Logo} alt="logo" className="h-[70px]" />
       </div>
 
-      <div></div>
+      <div>
+        <LogoutButton />
+      </div>
     </header>
   );
 }
