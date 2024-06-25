@@ -15,6 +15,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
+  const [healthCheck, setHealthCheck] = useState(false);
   const [currentUser, setCurrentUser] = useState();
   const navigate = useNavigate();
 
@@ -44,8 +45,15 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const id = setInterval(() => {
-      //todo
-    }, 1000);
+      api
+        .get("/wealth-check")
+        .then((response) => {
+          setHealthCheck(response.status <= 300);
+        })
+        .catch(() => {
+          setHealthCheck(false);
+        });
+    }, 10000);
 
     return () => {
       clearInterval(id);
@@ -70,7 +78,7 @@ export function AuthProvider({ children }) {
   }, [navigate]);
 
   return (
-    <AuthCtx.Provider value={{ login, currentUser }}>
+    <AuthCtx.Provider value={{ login, currentUser, healthCheck }}>
       {children}
     </AuthCtx.Provider>
   );
