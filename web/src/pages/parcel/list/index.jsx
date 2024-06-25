@@ -11,17 +11,19 @@ import { useEffect, useState } from "react";
 import LayoutMain from "../../../components/LayoutMain";
 import { api } from "../../../services/api";
 import { Button } from "@/src/components/ui/button";
+import { useAuth } from "@/src/context/Auth/auth";
 
 const ListParcel = () => {
   const [parcel, setParcel] = useState([]);
+  const { currentUser } = useAuth();
 
   const fetch = async () => {
     try {
       const response = await api.get("/parcel");
-      console.log(response.data);
+      // console.log(response.data);
       setParcel(response.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -69,11 +71,14 @@ const ListParcel = () => {
                 <TableCell>{item.tipoEntrega}</TableCell>
                 <TableCell>
                   <div className="flex gap-2 justify-center">
-                    <DeleteButton
-                      onContinue={() => {
-                        deleteParcel(item.id);
-                      }}
-                    />
+                    {currentUser.role === "admin" && (
+                      <DeleteButton
+                        onContinue={() => {
+                          deleteParcel(item.id);
+                        }}
+                      />
+                    )}
+
                     {item.status !== "entregue" ? (
                       <Button
                         onClick={() => {
