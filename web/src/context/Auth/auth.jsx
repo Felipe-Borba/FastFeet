@@ -35,7 +35,10 @@ export function AuthProvider({ children }) {
     sessionStorage.setItem("@FastFeet:token", token);
 
     setCurrentUser(response.data.user);
-    sessionStorage.setItem("@FastFeet:user", token);
+    sessionStorage.setItem(
+      "@FastFeet:user",
+      JSON.stringify(response.data.user)
+    );
     navigate("/parcel/list");
   };
 
@@ -53,10 +56,10 @@ export function AuthProvider({ children }) {
     apiMiddlewares();
 
     const token = sessionStorage.getItem("@FastFeet:token");
-    const user = sessionStorage.getItem("@FastFeet:user");
+    const userString = sessionStorage.getItem("@FastFeet:user");
 
-    if (user) {
-      setCurrentUser(user);
+    if (userString) {
+      setCurrentUser(JSON.parse(userString));
     }
 
     if (token) {
