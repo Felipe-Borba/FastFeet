@@ -58,6 +58,16 @@ class ParcelService {
     });
     return parcel;
   }
+
+  async markAsDelivered(id) {
+    const parcel = await prisma.parcel.update({
+      where: { id },
+      data: {
+        status: "entregue",
+      },
+    });
+    return parcel;
+  }
 }
 
 module.exports = ParcelService;
