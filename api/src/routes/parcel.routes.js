@@ -10,9 +10,9 @@ const controller = new ParcelController();
 // Rotas
 routes.post(
   "/",
-  body("cep", "cep é obrigatório").notEmpty(),
-  body("status", "status é obrigatório").optional(),
-  body("codigorastreio", "codigorastreio é obrigatório").optional(),
+  body("cep", "cep é obrigatório").isNumeric().notEmpty(),
+  // body("status", "status é obrigatório").optional(),
+  body("responsibleId", "userId é obrigatório").notEmpty(),
   body("tipoEntrega", "tipoEntrega é obrigatório").optional(),
   // body("responsibleId", "responsibleId é obrigatório").notEmpty(),
   validate,
