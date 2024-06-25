@@ -37,12 +37,8 @@ export default function UserCreate() {
       await api.post("/user", { name, cpf, password, role });
       navigate("/user/list");
     } catch (error) {
-<<<<<<< HEAD
-      alert("Erro no cadastro!");
-=======
       console.log(error.message);
       alert("Algum erro");
->>>>>>> fdfac28bb130f5342dce94830fbc4eb5b55c7dcd
     }
   };
 
@@ -61,20 +57,6 @@ export default function UserCreate() {
           >
             <Label>
               Nome
-<<<<<<< HEAD
-              <input value={name} onChange={(e) => setName(e.target.value)} 
-              type="text"
-              pattern="[A-Za-zÀ-ÿ\s]+"
-              title="(Apenas letras são aceitos no campo Nome"/>
-            </label>
-            <label>
-              CPF
-              <input value={cpf} onChange={(e) => setCpf(e.target.value)}
-                required="required" pattern="[0-9]+$"
-                title="(Apenas números são aceitos no campo CPF)" />
-            </label>
-            <label>
-=======
               <Input value={name} onChange={(e) => setName(e.target.value)} />
             </Label>
 
@@ -84,7 +66,6 @@ export default function UserCreate() {
             </Label>
 
             <Label>
->>>>>>> fdfac28bb130f5342dce94830fbc4eb5b55c7dcd
               Senha
               <Input
                 value={password}
