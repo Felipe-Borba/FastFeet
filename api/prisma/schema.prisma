@@ -23,16 +23,19 @@ model User {
 }
 
 model Parcel {
-  id             String  @id @default(uuid())
+  id             String    @id @default(uuid())
   cep            Int
   status         String
   codigorastreio String
   tipoEntrega    String
-  responsible    User?   @relation(fields: [responsibleId], references: [id])
+  responsible    User?     @relation(fields: [responsibleId], references: [id])
   responsibleId  String?
+  receiver       Recipient @relation(fields: [receiverId], references: [id])
+  receiverId     String
 }
 
 model Recipient {
-  id   String @id @default(uuid())
-  name String
+  id     String   @id @default(uuid())
+  name   String
+  Parcel Parcel[]
 }

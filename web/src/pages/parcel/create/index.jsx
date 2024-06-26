@@ -1,3 +1,4 @@
+import SelectReceiver from "@/src/components/SelectReceiver";
 import SelectUser from "@/src/components/SelectUser";
 import { Button } from "@/src/components/ui/button";
 import {
@@ -28,17 +29,21 @@ export default function CreateParcel() {
   const [cep, setCep] = useState("");
   const [tipoEntrega, setTipoEntrega] = useState("padrao");
   const [userId, setUserId] = useState();
+  const [receiverId, setReceiverId] = useState();
   const navigate = useNavigate();
 
   const handleCreateParcel = async (e) => {
     e.preventDefault();
     try {
-      // console.log({ cep, tipoEntrega, responsibleId: userId });
-      await api.post("/parcel", { cep, tipoEntrega, responsibleId: userId });
+      await api.post("/parcel", {
+        cep,
+        tipoEntrega,
+        responsibleId: userId,
+        receiverId,
+      });
 
       navigate("/parcel/list");
     } catch (error) {
-      // console.log(error.message);
       alert("Não foi possível cadastrar a encomenda");
     }
   };
@@ -63,6 +68,14 @@ export default function CreateParcel() {
                 placeholder=""
                 alue={cep}
                 onChange={(e) => setCep(e.target.value)}
+              />
+            </Label>
+
+            <Label>
+              Destinatário
+              <SelectReceiver
+                receiverId={receiverId}
+                setReceiverId={setReceiverId}
               />
             </Label>
 

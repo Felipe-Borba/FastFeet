@@ -4,7 +4,7 @@ const util = require("../utils");
 const prisma = new PrismaClient();
 
 class ParcelService {
-  async create({ cep, tipoEntrega, responsibleId }) {
+  async create({ cep, tipoEntrega, responsibleId, receiverId }) {
     const codigorastreio = util.randomArray().join("");
 
     // console.log({ cep, tipoEntrega, responsibleId, codigorastreio });
@@ -15,6 +15,7 @@ class ParcelService {
         codigorastreio,
         tipoEntrega,
         responsibleId,
+        receiverId,
       },
     });
     return parcel;
@@ -32,11 +33,20 @@ class ParcelService {
 
   async list(currentUser) {
     if (currentUser.role === "admin") {
-      const parcel = await prisma.parcel.findMany();
+      const parcel = await prisma.parcel.findMany({
+        include: {
+          receiver: { select: { name: true } },
+          responsible: { select: { name: true } },
+        },
+      });
       return parcel;
     } else {
       const parcel = await prisma.parcel.findMany({
         where: { responsibleId: currentUser.id },
+        include: {
+          receiver: { select: { name: true } },
+          responsible: { select: { name: true } },
+        },
       });
       return parcel;
     }

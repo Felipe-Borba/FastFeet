@@ -13,6 +13,7 @@ routes.post(
   body("cep", "cep é obrigatório").isNumeric().notEmpty(),
   // body("status", "status é obrigatório").optional(),
   body("responsibleId", "userId é obrigatório").notEmpty(),
+  body("receiverId", "receiverId é obrigatório").notEmpty(),
   body("tipoEntrega", "tipoEntrega é obrigatório").optional(),
   // body("responsibleId", "responsibleId é obrigatório").notEmpty(),
   validate,
@@ -26,14 +27,15 @@ routes.put(
   body("status", "status é obrigatório").optional(),
   body("codigorastreio", "codigorastreio é obrigatório").optional(),
   body("tipoEntrega", "tipoEntrega é obrigatório").optional(),
-  // body("responsibleId", "responsibleId é obrigatório").notEmpty(),
+  body("responsibleId", "responsibleId é obrigatório").notEmpty(),
+  body("receiverId", "receiverId é obrigatório").notEmpty(),
   validate,
   ensureAuthenticated,
   controller.update
 );
 routes.delete("/:id", ensureAuthenticated, controller.delete);
 routes.get("/:id", ensureAuthenticated, controller.findById);
-routes.post("/:id/delivered", ensureAuthenticated, controller.markAsDelivered)
+routes.post("/:id/delivered", ensureAuthenticated, controller.markAsDelivered);
 
 // Exporta
 module.exports = routes;
