@@ -32,9 +32,11 @@ import {
   DialogTrigger,
 } from "@/src/components/ui/dialog";
 import { Button } from "@/src/components/ui/button";
+import { useAuth } from "@/src/context/Auth/auth";
 
 const Page = () => {
   const [users, setUsers] = useState([]);
+  const { currentUser } = useAuth();
 
   const fetch = async () => {
     try {
@@ -46,12 +48,17 @@ const Page = () => {
   };
 
   const deleteUser = async (id) => {
-    try {
-      await api.delete(`/user/${id}`);
-      await fetch();
-    } catch (error) {
-      console.log(error);
+    console.log(currentUser)
+    if (id === currentUser?.id) {
+      console.error("Cannot delete the logged-in user!");
+      return;
     }
+    // try {
+    //   await api.delete(`/user/${id}`);
+    //   await fetch();
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   useEffect(() => {
@@ -78,11 +85,14 @@ const Page = () => {
                 <TableCell>{item.role}</TableCell>
                 <TableCell>
                   <div className="flex gap-3 justify-center">
-                    <DeleteButton
-                      onContinue={() => {
-                        deleteUser(item.id);
-                      }}
-                    />
+                    {item.id !== currentUser?.id ? (
+                      <DeleteButton
+                        onContinue={() =>
+                          deleteUser(item.id)
+                        }
+                      />
+                    ) : null
+                    }
                     <Dialog>
                       <DialogTrigger asChild>
                         <Button variant="outline">Atualizar</Button>

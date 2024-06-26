@@ -35,7 +35,7 @@ class ParcelController {
 
   async list(request, response) {
     try {
-      const parcel = await parcelService.list();
+      const parcel = await parcelService.list(request.user);
 
       return response.status(200).json(parcel);
     } catch (err) {
