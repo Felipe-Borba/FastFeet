@@ -1,3 +1,4 @@
+import SelectReceiver from "@/src/components/SelectReceiver";
 import SelectUser from "@/src/components/SelectUser";
 import { Button } from "@/src/components/ui/button";
 import {
@@ -25,23 +26,7 @@ import LayoutMain from "../../../components/LayoutMain";
 import { api } from "../../../services/api";
 
 export default function CreateParcel() {
-  const [cep, setCep] = useState("");
-  const [tipoEntrega, setTipoEntrega] = useState("padrao");
-  const [userId, setUserId] = useState();
   const navigate = useNavigate();
-
-  const handleCreateParcel = async (e) => {
-    e.preventDefault();
-    try {
-      // console.log({ cep, tipoEntrega, responsibleId: userId });
-      await api.post("/parcel", { cep, tipoEntrega, responsibleId: userId });
-
-      navigate("/parcel/list");
-    } catch (error) {
-      // console.log(error.message);
-      alert("Não foi possível cadastrar a encomenda");
-    }
-  };
 
   return (
     <LayoutMain selected={"/parcel/create"}>
@@ -51,42 +36,13 @@ export default function CreateParcel() {
           <CardDescription>Crie um nova encomenda</CardDescription>
         </CardHeader>
         <CardContent>
-          <form
-            id="form"
-            onSubmit={handleCreateParcel}
-            className="flex flex-col gap-4 w-80"
-          >
-            <Label>
-              CEP
-              <Input
-                type="number"
-                placeholder=""
-                alue={cep}
-                onChange={(e) => setCep(e.target.value)}
-              />
-            </Label>
-
-            <Label>
-              Tipo de Entrega
-              <Select value={tipoEntrega} onValueChange={setTipoEntrega}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Selecione um tipo de entrega" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Perfil</SelectLabel>
-                    <SelectItem value="padrao">Padrão</SelectItem>
-                    <SelectItem value="retirada">Retirada</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </Label>
-
-            <Label>
-              Entregador
-              <SelectUser user={userId} setUser={setUserId} />
-            </Label>
-          </form>
+          <ParcelForm
+            formId="form"
+            preventDefault
+            onFinish={() => {
+              navigate("/parcel/list");
+            }}
+          />
         </CardContent>
         <CardFooter>
           <Button form="form" type="submit">
@@ -97,3 +53,106 @@ export default function CreateParcel() {
     </LayoutMain>
   );
 }
+
+export const ParcelForm = ({
+  parcel,
+  onFinish,
+  formId,
+  preventDefault = false,
+}) => {
+  const [cep, setCep] = useState(parcel?.cep);
+  const [tipoEntrega, setTipoEntrega] = useState(
+    parcel?.tipoEntrega ?? "padrao"
+  );
+  const [responsibleId, setResponsibleId] = useState(parcel?.responsibleId);
+  const [receiverId, setReceiverId] = useState(parcel?.receiverId);
+
+  const updateParcel = async () => {
+    try {
+      console.log({
+        parcel,
+        cep,
+        tipoEntrega,
+        responsibleId,
+        receiverId,
+      });
+      await api.put("/parcel", {
+        id: parcel.id,
+        cep,
+        tipoEntrega,
+        responsibleId,
+        receiverId,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const createParcel = async () => {
+    try {
+      await api.post("/parcel", {
+        cep,
+        tipoEntrega,
+        responsibleId,
+        receiverId,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    if (preventDefault) {
+      event.preventDefault();
+    }
+    if (parcel) {
+      await updateParcel();
+    } else {
+      await createParcel();
+    }
+    await onFinish();
+  };
+
+  return (
+    <form
+      id={formId}
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 w-80"
+    >
+      <Label>
+        CEP
+        <Input
+          type="number"
+          value={cep}
+          onChange={(e) => setCep(e.target.value)}
+        />
+      </Label>
+
+      <Label>
+        Destinatário
+        <SelectReceiver receiverId={receiverId} setReceiverId={setReceiverId} />
+      </Label>
+
+      <Label>
+        Tipo de Entrega
+        <Select value={tipoEntrega} onValueChange={setTipoEntrega}>
+          <SelectTrigger>
+            <SelectValue placeholder="Selecione um tipo de entrega" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Perfil</SelectLabel>
+              <SelectItem value="padrao">Padrão</SelectItem>
+              <SelectItem value="retirada">Retirada</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </Label>
+
+      <Label>
+        Entregador
+        <SelectUser user={responsibleId} setUser={setResponsibleId} />
+      </Label>
+    </form>
+  );
+};

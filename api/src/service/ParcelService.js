@@ -4,17 +4,18 @@ const util = require("../utils");
 const prisma = new PrismaClient();
 
 class ParcelService {
-  async create({ cep, tipoEntrega, responsibleId }) {
+  async create({ cep, tipoEntrega, responsibleId, receiverId }) {
     const codigorastreio = util.randomArray().join("");
 
     // console.log({ cep, tipoEntrega, responsibleId, codigorastreio });
     const parcel = await prisma.parcel.create({
       data: {
-        cep: +cep,
+        cep: cep,
         status: "pendente",
         codigorastreio,
         tipoEntrega,
         responsibleId,
+        receiverId,
       },
     });
     return parcel;
@@ -30,9 +31,25 @@ class ParcelService {
     return parcel;
   }
 
-  async list() {
-    const parcel = await prisma.parcel.findMany();
-    return parcel;
+  async list(currentUser) {
+    if (currentUser.role === "admin") {
+      const parcel = await prisma.parcel.findMany({
+        include: {
+          receiver: { select: { name: true } },
+          responsible: { select: { name: true } },
+        },
+      });
+      return parcel;
+    } else {
+      const parcel = await prisma.parcel.findMany({
+        where: { responsibleId: currentUser.id },
+        include: {
+          receiver: { select: { name: true } },
+          responsible: { select: { name: true } },
+        },
+      });
+      return parcel;
+    }
   }
 
   async findById(id) {
@@ -44,7 +61,25 @@ class ParcelService {
     return parcel;
   }
 
-  async update({ id, cep, status, codigorastreio, tipoEntrega }) {
+  async update({
+    id,
+    cep,
+    status,
+    codigorastreio,
+    tipoEntrega,
+    responsibleId,
+    receiverId,
+  }) {
+    console.log({
+      id,
+      status,
+      codigorastreio,
+      tipoEntrega,
+      cep,
+      responsibleId,
+      receiverId,
+    });
+
     const parcel = await prisma.parcel.update({
       where: {
         id,
@@ -54,6 +89,8 @@ class ParcelService {
         status,
         codigorastreio,
         tipoEntrega,
+        responsibleId,
+        receiverId,
       },
     });
     return parcel;

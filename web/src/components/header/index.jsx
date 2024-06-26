@@ -1,20 +1,11 @@
-import { useEffect, useState } from "react";
+import { useAuth } from "@/src/context/Auth/auth";
+import { twMerge } from "tailwind-merge";
 import Logo from "../../assets/FastFeetLogo2.png";
-import { api } from "../../services/api";
+import { Button } from "../ui/button";
 import "./header.css";
-import { LogoutButton } from "../LogoutButton";
 
 export default function Header() {
-  const [user, setUser] = useState(null);
-
-  const fetch = async () => {
-    const response = await api.get("/user/me");
-    setUser(response.data);
-  };
-
-  useEffect(() => {
-    fetch();
-  }, []);
+  const { currentUser, healthCheck, logout } = useAuth();
 
   return (
     <header
@@ -22,14 +13,34 @@ export default function Header() {
         "w-full flex bg-[#ffa500] h-[15vh] items-center justify-between p-2 px-5"
       }
     >
-      <div>{user?.name ? <p>Bem vindo {user?.name}</p> : null}</div>
+      <div className="flex gap-1 justify-center items-center">
+        <div
+          className={twMerge(
+            "h-2 w-2 rounded-full",
+            healthCheck === "success"
+              ? "bg-green-600"
+              : healthCheck === "pending"
+              ? "bg-green-300 animate-pulse"
+              : "bg-red-600"
+          )}
+        ></div>
+        {currentUser?.name ? <p>Bem vindo {currentUser?.name}</p> : null}
+      </div>
 
       <div>
         <img src={Logo} alt="logo" className="h-[70px]" />
       </div>
 
       <div>
-        <LogoutButton />
+        {currentUser ? (
+          <Button
+            onClick={async () => {
+              await logout();
+            }}
+          >
+            Logout
+          </Button>
+        ) : null}
       </div>
     </header>
   );
