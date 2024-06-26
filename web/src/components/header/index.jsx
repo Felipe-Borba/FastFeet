@@ -28,14 +28,16 @@ export default function Header() {
       </div>
 
       <div>
-        {/* TODO hide button */}
-        <Button
+        {currentUser?(
+           <Button
           onClick={async () => {
             await logout();
           }}
         >
           Logout
         </Button>
+        ):null}
+       
       </div>
     </header>
   );
