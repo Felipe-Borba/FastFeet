@@ -17,7 +17,11 @@ export default function Header() {
         <div
           className={twMerge(
             "h-2 w-2 rounded-full",
-            healthCheck ? "bg-green-600" : "bg-red-600"
+            healthCheck === "success"
+              ? "bg-green-600"
+              : healthCheck === "pending"
+              ? "bg-green-300 animate-pulse"
+              : "bg-red-600"
           )}
         ></div>
         {currentUser?.name ? <p>Bem vindo {currentUser?.name}</p> : null}
@@ -28,16 +32,15 @@ export default function Header() {
       </div>
 
       <div>
-        {currentUser?(
-           <Button
-          onClick={async () => {
-            await logout();
-          }}
-        >
-          Logout
-        </Button>
-        ):null}
-       
+        {currentUser ? (
+          <Button
+            onClick={async () => {
+              await logout();
+            }}
+          >
+            Logout
+          </Button>
+        ) : null}
       </div>
     </header>
   );

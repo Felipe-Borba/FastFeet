@@ -1,6 +1,16 @@
 import { DeleteButton } from "@/src/components/DeleteButton";
 import { Button } from "@/src/components/ui/button";
 import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/src/components/ui/dialog";
+import {
   Table,
   TableBody,
   TableCell,
@@ -12,6 +22,7 @@ import { useAuth } from "@/src/context/Auth/auth";
 import { useEffect, useState } from "react";
 import LayoutMain from "../../../components/LayoutMain";
 import { api } from "../../../services/api";
+import { ParcelForm } from "../create";
 
 const ListParcel = () => {
   const [parcel, setParcel] = useState([]);
@@ -92,6 +103,29 @@ const ListParcel = () => {
                         Entregar
                       </Button>
                     ) : null}
+
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline">Atualizar</Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>Atualizar usuário</DialogTitle>
+                          <DialogDescription>
+                            Depois de atualizar o usuário clique em salvar
+                          </DialogDescription>
+                        </DialogHeader>
+                        <ParcelForm formId={"update"} parcel={item} />
+                        <DialogFooter>
+                          <DialogClose>
+                            <Button>Cancelar</Button>
+                          </DialogClose>
+                          <Button form="update" type="submit">
+                            Salvar
+                          </Button>
+                        </DialogFooter>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </TableCell>
               </TableRow>

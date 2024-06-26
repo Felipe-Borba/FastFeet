@@ -10,7 +10,7 @@ class ParcelService {
     // console.log({ cep, tipoEntrega, responsibleId, codigorastreio });
     const parcel = await prisma.parcel.create({
       data: {
-        cep: +cep,
+        cep: cep,
         status: "pendente",
         codigorastreio,
         tipoEntrega,
@@ -61,7 +61,25 @@ class ParcelService {
     return parcel;
   }
 
-  async update({ id, cep, status, codigorastreio, tipoEntrega }) {
+  async update({
+    id,
+    cep,
+    status,
+    codigorastreio,
+    tipoEntrega,
+    responsibleId,
+    receiverId,
+  }) {
+    console.log({
+      id,
+      status,
+      codigorastreio,
+      tipoEntrega,
+      cep,
+      responsibleId,
+      receiverId,
+    });
+
     const parcel = await prisma.parcel.update({
       where: {
         id,
@@ -71,6 +89,8 @@ class ParcelService {
         status,
         codigorastreio,
         tipoEntrega,
+        responsibleId,
+        receiverId,
       },
     });
     return parcel;
