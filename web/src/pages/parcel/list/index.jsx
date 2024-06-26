@@ -1,4 +1,5 @@
 import { DeleteButton } from "@/src/components/DeleteButton";
+import { Button } from "@/src/components/ui/button";
 import {
   Table,
   TableBody,
@@ -7,11 +8,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/src/components/ui/table";
+import { useAuth } from "@/src/context/Auth/auth";
 import { useEffect, useState } from "react";
 import LayoutMain from "../../../components/LayoutMain";
 import { api } from "../../../services/api";
-import { Button } from "@/src/components/ui/button";
-import { useAuth } from "@/src/context/Auth/auth";
 
 const ListParcel = () => {
   const [parcel, setParcel] = useState([]);
@@ -54,11 +54,13 @@ const ListParcel = () => {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>cep</TableHead>
-            <TableHead>status</TableHead>
+            <TableHead>CEP</TableHead>
+            <TableHead>Destinatário</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Entregador</TableHead>
             <TableHead>Código de Rastreio</TableHead>
             <TableHead>TipoEntrega</TableHead>
-            <TableHead>opção</TableHead>
+            <TableHead>Opção</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -66,7 +68,9 @@ const ListParcel = () => {
             return (
               <TableRow key={item.id}>
                 <TableCell>{item.cep}</TableCell>
+                <TableCell>{item.receiver.name}</TableCell>
                 <TableCell>{item.status}</TableCell>
+                <TableCell>{item.responsible.name}</TableCell>
                 <TableCell>{item.codigorastreio}</TableCell>
                 <TableCell>{item.tipoEntrega}</TableCell>
                 <TableCell>
