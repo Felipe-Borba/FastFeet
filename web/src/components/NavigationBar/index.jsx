@@ -7,17 +7,17 @@ const NavigationBar = ({ selected }) => {
 
   return (
     <nav className="p-5 flex flex-col gap-2 h-full bg-gray-400">
-      {currentUser.role == "admin" ? (
+      {currentUser?.role == "admin" ? (
         <Button to={"/user/create"} selected={selected}>
           Criar usuário
         </Button>
       ) : null}
-      {currentUser.role == "admin" ? (
+      {currentUser?.role == "admin" ? (
         <Button to={"/user/list"} selected={selected}>
           Gerenciar usuários
         </Button>
       ) : null}
-      {currentUser.role == "admin" ? (
+      {currentUser?.role == "admin" ? (
         <Button to={"/parcel/create"} selected={selected}>
           Cadastrar uma encomenda
         </Button>
@@ -25,12 +25,12 @@ const NavigationBar = ({ selected }) => {
       <Button to={"/parcel/list"} selected={selected}>
         Gerenciar uma encomenda
       </Button>
-      {currentUser.role == "admin" ? (
+      {currentUser?.role == "admin" ? (
         <Button to={"/recipient/create"} selected={selected}>
           Cadastrar destinatário
         </Button>
       ) : null}
-      {currentUser.role == "admin" ? (
+      {currentUser?.role == "admin" ? (
         <Button to={"/recipient/list"} selected={selected}>
           Gerenciar destinatários
         </Button>
