@@ -47,10 +47,33 @@ const Page = () => {
     }
   };
 
+  const updateUser = async () => {
+    if (currentUser?.role === 'admin') {
+      // Admin logic to update any user (unchanged)
+    } else if (currentUser?.role === 'entregador') {
+      if (currentUser?.id === user.id) {
+        // Entregador can update their own profile
+        try {
+          console.log({ id: user.id, name, cpf, password, role });
+          await api.put("/user", { id: user.id, name, cpf, password, role });
+        } catch (error) {
+          console.log(error.message);
+        }
+      } else {
+        console.error("Entregador can only update their own profile.");
+      }
+    }
+  };
+
   const deleteUser = async (id) => {
     console.log(currentUser)
     if (id === currentUser?.id) {
       console.error("Cannot delete the logged-in user!");
+      return;
+    }
+
+    if (currentUser?.role !== 'admin') {
+      console.error("Only admins can delete users!");
       return;
     }
     // try {
@@ -85,7 +108,7 @@ const Page = () => {
                 <TableCell>{item.role}</TableCell>
                 <TableCell>
                   <div className="flex gap-3 justify-center">
-                    {item.id !== currentUser?.id ? (
+                    {item.id !== currentUser?.id && currentUser?.role === 'admin' ? (
                       <DeleteButton
                         onContinue={() =>
                           deleteUser(item.id)
@@ -95,7 +118,9 @@ const Page = () => {
                     }
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button variant="outline">Atualizar</Button>
+                        {currentUser?.role === "admin" || item.id === currentUser.id && (
+                          <Button variant="outline">Atualizar</Button>
+                        )}
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
@@ -104,7 +129,7 @@ const Page = () => {
                             Depois de atualizar o usuário clique em salvar
                           </DialogDescription>
                         </DialogHeader>
-                        <UserForm formId={"update"} user={item} />
+                          <UserForm formId={"update"} user={item} />
                         <DialogFooter>
                           <DialogClose>
                             <Button>Cancelar</Button>
