@@ -24,7 +24,7 @@ model User {
 
 model Parcel {
   id             String    @id @default(uuid())
-  cep            Int
+  cep            String
   status         String
   codigorastreio String
   tipoEntrega    String
