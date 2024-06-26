@@ -56,6 +56,24 @@ const ListParcel = () => {
     }
   };
 
+  const returnParcel = async (id) => {
+    try {
+      await api.post(`/parcel/${id}/return`);
+      await fetch();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const cancelParcel = async (id) => {
+    try {
+      await api.post(`/parcel/${id}/cancel`);
+      await fetch();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetch();
   }, []);
@@ -94,7 +112,7 @@ const ListParcel = () => {
                       />
                     )}
 
-                    {item.status !== "entregue" ? (
+                    {item.status === "pendente"  ? (
                       <Button
                         onClick={() => {
                           deliveryParcel(item.id);
@@ -104,9 +122,31 @@ const ListParcel = () => {
                       </Button>
                     ) : null}
 
+                    {item.status === "entregue" ? (
+                      <Button
+                        onClick={() => {
+                          returnParcel(item.id);
+                        }}
+                      >
+                        Devolver
+                      </Button>
+                    ) : null}
+
+                    {item.status === "pendente"  ? (
+                      <Button
+                        onClick={() => {
+                          cancelParcel(item.id);
+                        }}
+                      >
+                        Cancelar
+                      </Button>
+                    ) : null}
+
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button variant="outline">Atualizar</Button>
+                        {currentUser.role === "admin" && (
+                          <Button variant="outline">Atualizar</Button>
+                        )}
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>

@@ -36,6 +36,8 @@ routes.put(
 routes.delete("/:id", ensureAuthenticated, controller.delete);
 routes.get("/:id", ensureAuthenticated, controller.findById);
 routes.post("/:id/delivered", ensureAuthenticated, controller.markAsDelivered);
+routes.post("/:id/return", ensureAuthenticated, controller.markAsReturn);
+routes.post("/:id/cancel", ensureAuthenticated, controller.markAsCancel);
 
 // Exporta
 module.exports = routes;

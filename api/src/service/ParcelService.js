@@ -105,6 +105,26 @@ class ParcelService {
     });
     return parcel;
   }
+
+  async markAsReturn(id){
+    const parcel = await prisma.parcel.update({
+      where: { id },
+      data: {
+        status: "devolvido",
+      },
+    });
+    return parcel;
+  }
+
+  async markAsCancel(id) {
+    const parcel = await prisma.parcel.update({
+      where: { id },
+      data: {
+        status: "cancelado",
+      },
+    });
+    return parcel;
+  }
 }
 
 module.exports = ParcelService;
