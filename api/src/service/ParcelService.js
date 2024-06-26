@@ -30,9 +30,16 @@ class ParcelService {
     return parcel;
   }
 
-  async list() {
-    const parcel = await prisma.parcel.findMany();
-    return parcel;
+  async list(currentUser) {
+    if (currentUser.role === "admin") {
+      const parcel = await prisma.parcel.findMany();
+      return parcel;
+    } else {
+      const parcel = await prisma.parcel.findMany({
+        where: { responsibleId: currentUser.id },
+      });
+      return parcel;
+    }
   }
 
   async findById(id) {

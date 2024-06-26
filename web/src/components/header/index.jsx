@@ -28,6 +28,7 @@ export default function Header() {
       </div>
 
       <div>
+        {/* TODO hide button */}
         <Button
           onClick={async () => {
             await logout();
