@@ -37,10 +37,9 @@ const ListParcel = () => {
   const fetch = async () => {
     try {
       const response = await api.get("/parcel");
-      // console.log(response.data);
       setParcel(response.data);
     } catch (error) {
-      // console.log(error);
+      console.log(error?.message);
     }
   };
 
@@ -187,9 +186,9 @@ const ListParcel = () => {
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
-                          <DialogTitle>Atualizar usuário</DialogTitle>
+                          <DialogTitle>Atualizar entrega</DialogTitle>
                           <DialogDescription>
-                            Depois de atualizar o usuário clique em salvar
+                            Depois de atualizar a entrega clique em salvar
                           </DialogDescription>
                         </DialogHeader>
                         <ParcelForm formId={"update"} parcel={item} />
