@@ -23,9 +23,15 @@ import { useEffect, useState } from "react";
 import LayoutMain from "../../../components/LayoutMain";
 import { api } from "../../../services/api";
 import { ParcelForm } from "../create";
+import { Input } from "@/src/components/ui/input";
+import { Card } from "@/src/components/ui/card";
+import { Search } from "lucide-react";
+
 
 const ListParcel = () => {
   const [parcel, setParcel] = useState([]);
+  const [filteredParcel, setFilteredParcel] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const { currentUser } = useAuth();
 
   const fetch = async () => {
@@ -78,8 +84,39 @@ const ListParcel = () => {
     fetch();
   }, []);
 
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value.toLowerCase());
+  };
+
+  const handleFilter = () => {
+    if (searchQuery) {
+      const filteredData = parcel.filter((item) =>
+        item.receiver.name.toLowerCase().includes(searchQuery)
+      );
+      setFilteredParcel(filteredData);
+    } else {
+      setFilteredParcel(parcel);
+    }
+  };
+
+  useEffect(() => {
+    handleFilter();
+  }, [searchQuery]);
+
+  const displayedData = filteredParcel.length > 0 ? filteredParcel : parcel;
+
   return (
     <LayoutMain selected={"/parcel/list"}>
+      <Card className="self-start">
+        <div className="flex items-center">
+          <Search size={20} style={{ marginRight: '5px' }} />
+          <Input
+            placeholder={"destinatario"}
+            onChange={handleSearchChange}
+            value={searchQuery}
+          />
+        </div>
+      </Card>
       <Table>
         <TableHeader>
           <TableRow>
@@ -93,7 +130,7 @@ const ListParcel = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {parcel.map((item) => {
+          {displayedData.map((item) => {
             return (
               <TableRow key={item.id}>
                 <TableCell>{item.cep}</TableCell>
@@ -112,7 +149,7 @@ const ListParcel = () => {
                       />
                     )}
 
-                    {item.status === "pendente"  ? (
+                    {item.status === "pendente" ? (
                       <Button
                         onClick={() => {
                           deliveryParcel(item.id);
@@ -132,7 +169,7 @@ const ListParcel = () => {
                       </Button>
                     ) : null}
 
-                    {item.status === "pendente"  ? (
+                    {item.status === "pendente" ? (
                       <Button
                         onClick={() => {
                           cancelParcel(item.id);
