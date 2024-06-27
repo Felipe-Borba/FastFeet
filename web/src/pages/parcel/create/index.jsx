@@ -129,7 +129,7 @@ export const ParcelForm = ({
         <SelectReceiver receiverId={receiverId} setReceiverId={setReceiverId} />
       </Label>
 
-      {parcel.status && (
+      {parcel?.status && (
         <Label>
           Status
           <Input
@@ -146,7 +146,7 @@ export const ParcelForm = ({
         <SelectUser user={responsibleId} setUser={setResponsibleId} />
       </Label>
 
-      {parcel.codigorastreio && (
+      {parcel?.codigorastreio && (
         <Label>
           Código de rastreio
           <Input
