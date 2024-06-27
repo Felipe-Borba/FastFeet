@@ -85,12 +85,12 @@ class ParcelService {
         id,
       },
       data: {
-        cep,
-        status,
-        codigorastreio,
-        tipoEntrega,
-        responsibleId,
-        receiverId,
+        cep: cep,
+        status: status,
+        codigorastreio: codigorastreio,
+        tipoEntrega: tipoEntrega,
+        responsibleId: responsibleId,
+        receiverId: receiverId,
       },
     });
     return parcel;
@@ -106,7 +106,7 @@ class ParcelService {
     return parcel;
   }
 
-  async markAsReturn(id){
+  async markAsReturn(id) {
     const parcel = await prisma.parcel.update({
       where: { id },
       data: {

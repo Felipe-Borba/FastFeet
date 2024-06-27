@@ -11,11 +11,9 @@ const controller = new ParcelController();
 routes.post(
   "/",
   body("cep", "cep é obrigatório").isNumeric().notEmpty(),
-  // body("status", "status é obrigatório").optional(),
   body("responsibleId", "userId é obrigatório").notEmpty(),
   body("receiverId", "receiverId é obrigatório").notEmpty(),
   body("tipoEntrega", "tipoEntrega é obrigatório").optional(),
-  // body("responsibleId", "responsibleId é obrigatório").notEmpty(),
   validate,
   controller.create
 );

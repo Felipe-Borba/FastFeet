@@ -15,6 +15,7 @@ class ParcelController {
 
   async update(request, response) {
     try {
+      console.log(request.body);
       const parcel = await parcelService.update(request.body);
 
       return response.status(200).json(parcel);
