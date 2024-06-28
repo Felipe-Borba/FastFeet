@@ -11,11 +11,9 @@ const controller = new ParcelController();
 routes.post(
   "/",
   body("cep", "cep é obrigatório").isNumeric().notEmpty(),
-  // body("status", "status é obrigatório").optional(),
   body("responsibleId", "userId é obrigatório").notEmpty(),
   body("receiverId", "receiverId é obrigatório").notEmpty(),
   body("tipoEntrega", "tipoEntrega é obrigatório").optional(),
-  // body("responsibleId", "responsibleId é obrigatório").notEmpty(),
   validate,
   controller.create
 );
@@ -36,6 +34,8 @@ routes.put(
 routes.delete("/:id", ensureAuthenticated, controller.delete);
 routes.get("/:id", ensureAuthenticated, controller.findById);
 routes.post("/:id/delivered", ensureAuthenticated, controller.markAsDelivered);
+routes.post("/:id/return", ensureAuthenticated, controller.markAsReturn);
+routes.post("/:id/cancel", ensureAuthenticated, controller.markAsCancel);
 
 // Exporta
 module.exports = routes;
