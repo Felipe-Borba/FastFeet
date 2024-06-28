@@ -15,6 +15,7 @@ class ParcelController {
 
   async update(request, response) {
     try {
+      console.log(request.body);
       const parcel = await parcelService.update(request.body);
 
       return response.status(200).json(parcel);
@@ -56,6 +57,26 @@ class ParcelController {
   async markAsDelivered(request, response) {
     try {
       const parcel = await parcelService.markAsDelivered(request.params.id);
+
+      return response.status(200).json(parcel);
+    } catch (err) {
+      return response.status(500).json(err.message);
+    }
+  }
+
+  async markAsReturn(request, response) {
+    try {
+      const parcel = await parcelService.markAsReturn(request.params.id);
+
+      return response.status(200).json(parcel);
+    } catch (err) {
+      return response.status(500).json(err.message);
+    }
+  }
+
+  async markAsCancel(request, response) {
+    try {
+      const parcel = await parcelService.markAsCancel(request.params.id);
 
       return response.status(200).json(parcel);
     } catch (err) {

@@ -61,6 +61,7 @@ export const ParcelForm = ({
   preventDefault = false,
 }) => {
   const [cep, setCep] = useState(parcel?.cep);
+  const [codigorastreio, setCodigorastreio] = useState(parcel?.codigorastreio);
   const [tipoEntrega, setTipoEntrega] = useState(
     parcel?.tipoEntrega ?? "padrao"
   );
@@ -69,22 +70,17 @@ export const ParcelForm = ({
 
   const updateParcel = async () => {
     try {
-      console.log({
-        parcel,
-        cep,
-        tipoEntrega,
-        responsibleId,
-        receiverId,
-      });
       await api.put("/parcel", {
         id: parcel.id,
         cep,
         tipoEntrega,
         responsibleId,
         receiverId,
+        status: parcel.status,
+        codigorastreio: codigorastreio.toUpperCase(),
       });
     } catch (error) {
-      console.log(error.message);
+      console.log(error?.message);
     }
   };
 
@@ -97,7 +93,7 @@ export const ParcelForm = ({
         receiverId,
       });
     } catch (error) {
-      console.log(error.message);
+      console.log(error?.message);
     }
   };
 
@@ -105,7 +101,7 @@ export const ParcelForm = ({
     if (preventDefault) {
       event.preventDefault();
     }
-    if (parcel) {
+    if (parcel?.id) {
       await updateParcel();
     } else {
       await createParcel();
@@ -133,6 +129,34 @@ export const ParcelForm = ({
         <SelectReceiver receiverId={receiverId} setReceiverId={setReceiverId} />
       </Label>
 
+      {parcel?.status && (
+        <Label>
+          Status
+          <Input
+            type="string"
+            disabled
+            value={parcel.status}
+            // onChange={(e) => setStatus(e.target.value)}
+          />
+        </Label>
+      )}
+
+      <Label>
+        Entregador
+        <SelectUser user={responsibleId} setUser={setResponsibleId} />
+      </Label>
+
+      {parcel?.codigorastreio && (
+        <Label>
+          Código de rastreio
+          <Input
+            type="string"
+            value={codigorastreio.toUpperCase()}
+            onChange={(e) => setCodigorastreio(e.target.value)}
+          />
+        </Label>
+      )}
+
       <Label>
         Tipo de Entrega
         <Select value={tipoEntrega} onValueChange={setTipoEntrega}>
@@ -147,11 +171,6 @@ export const ParcelForm = ({
             </SelectGroup>
           </SelectContent>
         </Select>
-      </Label>
-
-      <Label>
-        Entregador
-        <SelectUser user={responsibleId} setUser={setResponsibleId} />
       </Label>
     </form>
   );

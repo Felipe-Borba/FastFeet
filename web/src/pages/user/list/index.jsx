@@ -118,9 +118,9 @@ const Page = () => {
                     }
                     <Dialog>
                       <DialogTrigger asChild>
-                        {currentUser?.role === "admin" || item.id === currentUser.id && (
+                        {currentUser?.role === "admin" || item.id === currentUser.id ? (
                           <Button variant="outline">Atualizar</Button>
-                        )}
+                        ) : null}
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
