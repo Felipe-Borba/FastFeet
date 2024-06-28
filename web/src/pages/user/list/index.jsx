@@ -47,41 +47,23 @@ const Page = () => {
     }
   };
 
-  const updateUser = async () => {
-    if (currentUser?.role === 'admin') {
-      // Admin logic to update any user (unchanged)
-    } else if (currentUser?.role === 'entregador') {
-      if (currentUser?.id === user.id) {
-        // Entregador can update their own profile
-        try {
-          console.log({ id: user.id, name, cpf, password, role });
-          await api.put("/user", { id: user.id, name, cpf, password, role });
-        } catch (error) {
-          console.log(error.message);
-        }
-      } else {
-        console.error("Entregador can only update their own profile.");
-      }
-    }
-  };
-
   const deleteUser = async (id) => {
-    console.log(currentUser)
     if (id === currentUser?.id) {
       console.error("Cannot delete the logged-in user!");
       return;
     }
 
-    if (currentUser?.role !== 'admin') {
+    if (currentUser?.role !== "admin") {
       console.error("Only admins can delete users!");
       return;
     }
-    // try {
-    //   await api.delete(`/user/${id}`);
-    //   await fetch();
-    // } catch (error) {
-    //   console.log(error);
-    // }
+
+    try {
+      await api.delete(`/user/${id}`);
+      await fetch();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -108,17 +90,14 @@ const Page = () => {
                 <TableCell>{item.role}</TableCell>
                 <TableCell>
                   <div className="flex gap-3 justify-center">
-                    {item.id !== currentUser?.id && currentUser?.role === 'admin' ? (
-                      <DeleteButton
-                        onContinue={() =>
-                          deleteUser(item.id)
-                        }
-                      />
-                    ) : null
-                    }
+                    {item.id !== currentUser?.id &&
+                    currentUser?.role === "admin" ? (
+                      <DeleteButton onContinue={() => deleteUser(item.id)} />
+                    ) : null}
                     <Dialog>
                       <DialogTrigger asChild>
-                        {currentUser?.role === "admin" || item.id === currentUser.id ? (
+                        {currentUser?.role === "admin" ||
+                        item.id === currentUser.id ? (
                           <Button variant="outline">Atualizar</Button>
                         ) : null}
                       </DialogTrigger>
@@ -129,7 +108,7 @@ const Page = () => {
                             Depois de atualizar o usuário clique em salvar
                           </DialogDescription>
                         </DialogHeader>
-                          <UserForm formId={"update"} user={item} />
+                        <UserForm formId={"update"} user={item} />
                         <DialogFooter>
                           <DialogClose>
                             <Button>Cancelar</Button>
@@ -161,7 +140,7 @@ const UserForm = ({ user, formId, preventDefault = false }) => {
 
   const updateUser = async () => {
     try {
-      console.log({ id: user.id, name, cpf, password, role })
+      // console.log({ id: user.id, name, cpf, password, role });
       await api.put("/user", { id: user.id, name, cpf, password, role });
     } catch (error) {
       console.log(error.message);
@@ -176,7 +155,11 @@ const UserForm = ({ user, formId, preventDefault = false }) => {
   };
 
   return (
-    <form id={formId} onSubmit={handleSubmit} className="flex flex-col gap-4 w-80">
+    <form
+      id={formId}
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 w-80"
+    >
       <Label>
         Nome
         <Input
@@ -187,11 +170,7 @@ const UserForm = ({ user, formId, preventDefault = false }) => {
       </Label>
       <Label>
         CPF
-        <Input
-          required
-          value={cpf}
-          onChange={(e) => setCpf(e.target.value)}
-        />
+        <Input required value={cpf} onChange={(e) => setCpf(e.target.value)} />
       </Label>
       <Label>
         Senha

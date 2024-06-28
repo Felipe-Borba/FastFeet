@@ -14,7 +14,7 @@ O projeto Fast Feed é um sistema de gestão de entregas que visa facilitar o pr
 - [x] RF04 Deve ser possível realizar a criação, leitura, atualização e exclusão das encomendas.
 - [x] RF05 Deve ser possivel realizar a criação, leitura, atualização e exclusão dos destinatários.
 - [x] RF06 Deve ser possível marcar uma encomenda como aguardando (Disponível para retirada).
-- [x ] RF07 Deve ser possível marcar uma encomenda como devolvida.
+- [x] RF07 Deve ser possível marcar uma encomenda como devolvida.
 - [x] RF08 Deve ser possível alterar a senha de um usuário.
 - [x] RF09 Deve ser possível listar as entregas de um usuário.
 - [x] RF10 Apenas usuários com perfil de administrador têm permissão para realizar operações de criação, leitura, atualização e exclusão nas encomendas.
@@ -46,16 +46,34 @@ O projeto Fast Feed é um sistema de gestão de entregas que visa facilitar o pr
 
 ## Instalação ⚙ ️
 
-Instale my-project com npm
+### Backend setup
 
 ```bash
-  npm install my-project
-  cd my-project
+  cd api
+  npm install
+```
+
+make your .env file based on .env.dev
+
+```bash
+  npm run migrate:dev
+  npm run dev
+```
+
+### Frontend setup
+
+```bash
+  cd web
+  npm install
+  npm run dev
 ```
 
 ## Demonstração 🎣
 
-Insira um gif ou um link de alguma demonstração
+https://fast-feet.vercel.app
+
+<!-- https://vercel.com/felieps-projects/fast-feet -->
+<!-- https://dashboard.render.com/web/srv-cptb5fuehbks73f29730 -->
 
 ## Teste 🧪
 
