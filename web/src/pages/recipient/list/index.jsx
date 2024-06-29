@@ -84,7 +84,13 @@ const ListRecipient = () => {
                             Depois de atualizar o usuário clique em salvar
                           </DialogDescription>
                         </DialogHeader>
-                        <RecipientForm formId={"update"} user={item} />
+                        <RecipientForm
+                          formId={"update"}
+                          user={item}
+                          onFinish={() => {
+                            fetch();
+                          }}
+                        />
                         <DialogFooter>
                           <DialogClose>
                             <Button>Cancelar</Button>
@@ -108,22 +114,22 @@ const ListRecipient = () => {
 
 export default ListRecipient;
 
-const RecipientForm = ({ user, formId, preventDefault = false }) => {
+const RecipientForm = ({ user, formId, onFinish = () => {} }) => {
   const [name, setName] = useState(user?.name ?? "");
 
   const updateUser = async () => {
     try {
-      await api.put("/recipient", { id: user.id, name });
+      console.log({ name, user });
+      await api.put("/recipient/", { id: user.id, name });
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
 
   const handleSubmit = async (event) => {
-    if (preventDefault) {
-      event.preventDefault();
-    }
+    event.preventDefault();
     await updateUser();
+    onFinish();
   };
 
   return (
