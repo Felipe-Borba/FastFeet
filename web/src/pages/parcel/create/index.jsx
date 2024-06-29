@@ -38,7 +38,6 @@ export default function CreateParcel() {
         <CardContent>
           <ParcelForm
             formId="form"
-            preventDefault
             onFinish={() => {
               navigate("/parcel/list");
             }}
@@ -54,12 +53,7 @@ export default function CreateParcel() {
   );
 }
 
-export const ParcelForm = ({
-  parcel,
-  onFinish,
-  formId,
-  preventDefault = false,
-}) => {
+export const ParcelForm = ({ parcel, onFinish, formId }) => {
   const [cep, setCep] = useState(parcel?.cep);
   const [codigorastreio, setCodigorastreio] = useState(parcel?.codigorastreio);
   const [tipoEntrega, setTipoEntrega] = useState(
@@ -98,9 +92,7 @@ export const ParcelForm = ({
   };
 
   const handleSubmit = async (event) => {
-    if (preventDefault) {
-      event.preventDefault();
-    }
+    event.preventDefault();
     if (parcel?.id) {
       await updateParcel();
     } else {

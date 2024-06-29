@@ -108,7 +108,13 @@ const Page = () => {
                             Depois de atualizar o usuário clique em salvar
                           </DialogDescription>
                         </DialogHeader>
-                        <UserForm formId={"update"} user={item} />
+                        <UserForm
+                          formId={"update"}
+                          user={item}
+                          onFinish={() => {
+                            fetch();
+                          }}
+                        />
                         <DialogFooter>
                           <DialogClose>
                             <Button>Cancelar</Button>
@@ -132,7 +138,7 @@ const Page = () => {
 
 export default Page;
 
-const UserForm = ({ user, formId, preventDefault = false }) => {
+const UserForm = ({ user, formId, onFinish = () => {} }) => {
   const [name, setName] = useState(user?.name ?? "");
   const [cpf, setCpf] = useState(user?.cpf ?? "");
   const [password, setPassword] = useState(user?.password ?? "");
@@ -148,10 +154,9 @@ const UserForm = ({ user, formId, preventDefault = false }) => {
   };
 
   const handleSubmit = async (event) => {
-    if (preventDefault) {
-      event.preventDefault();
-    }
+    event.preventDefault();
     await updateUser();
+    onFinish();
   };
 
   return (

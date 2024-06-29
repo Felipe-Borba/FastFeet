@@ -27,7 +27,6 @@ import { Input } from "@/src/components/ui/input";
 import { Card } from "@/src/components/ui/card";
 import { Search } from "lucide-react";
 
-
 const ListParcel = () => {
   const [parcel, setParcel] = useState([]);
   const [filteredParcel, setFilteredParcel] = useState([]);
@@ -108,7 +107,7 @@ const ListParcel = () => {
     <LayoutMain selected={"/parcel/list"}>
       <Card className="self-start">
         <div className="flex items-center">
-          <Search size={20} style={{ marginRight: '5px' }} />
+          <Search size={20} style={{ marginRight: "5px" }} />
           <Input
             placeholder={"destinatario"}
             onChange={handleSearchChange}
@@ -191,7 +190,13 @@ const ListParcel = () => {
                             Depois de atualizar a entrega clique em salvar
                           </DialogDescription>
                         </DialogHeader>
-                        <ParcelForm formId={"update"} parcel={item} />
+                        <ParcelForm
+                          formId={"update"}
+                          parcel={item}
+                          onFinish={() => {
+                            fetch();
+                          }}
+                        />
                         <DialogFooter>
                           <DialogClose>
                             <Button>Cancelar</Button>

@@ -89,7 +89,7 @@ export function AuthProvider({ children }) {
     } else {
       navigate("/", { replace: true });
     }
-  }, [navigate]);
+  }, []);
 
   return (
     <AuthCtx.Provider value={{ login, currentUser, healthCheck, logout }}>
