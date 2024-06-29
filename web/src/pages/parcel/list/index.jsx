@@ -1,5 +1,6 @@
 import { DeleteButton } from "@/src/components/DeleteButton";
 import { Button } from "@/src/components/ui/button";
+import { Card } from "@/src/components/ui/card";
 import {
   Dialog,
   DialogClose,
@@ -19,13 +20,11 @@ import {
   TableRow,
 } from "@/src/components/ui/table";
 import { useAuth } from "@/src/context/Auth/auth";
+import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import LayoutMain from "../../../components/LayoutMain";
 import { api } from "../../../services/api";
 import { ParcelForm } from "../create";
-import { Input } from "@/src/components/ui/input";
-import { Card } from "@/src/components/ui/card";
-import { Search } from "lucide-react";
 
 const ListParcel = () => {
   const [parcel, setParcel] = useState([]);
@@ -108,10 +107,11 @@ const ListParcel = () => {
       <Card className="self-start">
         <div className="flex items-center">
           <Search size={20} style={{ marginRight: "5px" }} />
-          <Input
+          <input
             placeholder={"destinatario"}
             onChange={handleSearchChange}
             value={searchQuery}
+            className="border-0 focus-visible:outline-none"
           />
         </div>
       </Card>
