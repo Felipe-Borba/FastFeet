@@ -42,6 +42,16 @@ export default function UserCreate() {
     }
   };
 
+  const isFormValid = () => {
+    const isCpfValidLength = cpf.trim().length >= 11;
+    return (
+      name.trim() !== "" &&
+      isCpfValidLength &&
+      password.trim() !== "" &&
+      role !== ""
+    );
+  };
+
   return (
     <Layout id="create-user" selected={"/user/create"}>
       <Card>
@@ -63,6 +73,7 @@ export default function UserCreate() {
             <Label>
               CPF
               <Input value={cpf} onChange={(e) => setCpf(e.target.value)} />
+              {cpf.trim().length < 11 && <span className="error">O CPF deve ter no minimo 11 dígitos.</span>}
             </Label>
 
             <Label>
@@ -91,7 +102,7 @@ export default function UserCreate() {
           </form>
         </CardContent>
         <CardFooter>
-          <Button form="form" type="submit">
+          <Button form="form" type="submit" disabled={!isFormValid()}>
             Cadastrar
           </Button>
         </CardFooter>
