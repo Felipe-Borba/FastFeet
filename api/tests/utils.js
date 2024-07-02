@@ -5,12 +5,12 @@ const app = require("../src/server");
 
 const prisma = new PrismaClient();
 
-const getUserTokenByEmail = async (cpf = "123") => {
+const getUserTokenByCpf = async (cpf = "123") => {
   const user = await prisma.user.findUniqueOrThrow({
     where: { cpf },
   });
 
-  const token = sign({ user }, "development", {
+  const token = sign({ user }, process.env.AUTH_SECRET, {
     expiresIn: 86400, // expira em 24 horas
   });
 
@@ -21,6 +21,6 @@ const request = supertest(app);
 
 module.exports = {
   request,
-  getUserTokenByEmail,
+  getUserTokenByCpf,
   prisma,
 };

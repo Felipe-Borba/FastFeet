@@ -2,7 +2,7 @@
   "name": "fast-feet-api",
   "version": "1.0.0",
   "description": "api",
-  "main": "./src/server.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "jest --testTimeout=5000 --detectOpenHandles",
     "test:dev": "jest --testTimeout=5000 --detectOpenHandles --watch",
@@ -12,7 +12,7 @@
     "migrate:prod": "prisma migrate deploy",
     "db:reset": "prisma migrate reset",
     "db:seed": "prisma db seed",
-    "dev": "nodemon ./src/server.js"
+    "dev": "nodemon ./src/index.js"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
