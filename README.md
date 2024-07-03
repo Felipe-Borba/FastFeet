@@ -42,7 +42,7 @@ O projeto Fast Feed é um sistema de gestão de entregas que visa facilitar o pr
 - React
 - JavaScript
 - PrismaJS
-- MySQL
+- SQLite
 
 ## Instalação ⚙ ️
 
