@@ -19,7 +19,7 @@ O projeto Fast Feed é um sistema de gestão de entregas que visa facilitar o pr
 - [x] RF09 Deve ser possível listar as entregas de um usuário.
 - [x] RF10 Apenas usuários com perfil de administrador têm permissão para realizar operações de criação, leitura, atualização e exclusão nas encomendas.
 - [x] RF11 Apenas usuários com perfil de administrador têm permissão para realizar operações de criação, leitura, atualização e exclusão dos entregadores.
-- [x] RF12 Apenas usuários com perfil de administrador têm permissão para realizar operações de riação, leitura, atualização e exclusão dos destinatários.
+- [x] RF12 Apenas usuários com perfil de administrador têm permissão para realizar operações de criação, leitura, atualização e exclusão dos destinatários.
 - [x] RF13 Somente o entregador que retirou a encomenda tem autorização para marcá-la como entregue.
 - [x] RF14 Apenas os administradores podem modificar a senha de um usuário.
 - [x] RF15 Os entregadores não têm permissão para listar as encomendas de outros entregadores.
@@ -76,6 +76,8 @@ https://fast-feet.vercel.app
 <!-- https://dashboard.render.com/web/srv-cptb5fuehbks73f29730 -->
 
 ## Teste 🧪
+
+https://youtu.be/pGkBx4g_c3Y
 
 ## Autores 👤
 
