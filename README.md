@@ -79,6 +79,60 @@ https://fast-feet.vercel.app
 
 https://youtu.be/pGkBx4g_c3Y
 
+## Project Model Canvas
+
+### Justificativas (Passado):
+
+A necessidade de otimizar a logística e o controle de entregas, especialmente com o crescimento do e-commerce e da demanda por entregas rápidas.
+
+### Produto:
+
+Sistema de gestão de entregas, com funcionalidades para transportadoras e entregadores, permitindo monitoramento de pacotes, criação de rotas, e comunicação eficiente.
+
+### Stakeholders Externos & Fatores Externos:
+
+Entregadores, empresas de transporte, consumidores finais (que aguardam as entregas), e empresas parceiras. Fatores externos incluem mudanças nas legislações de transporte e concorrência.
+
+### Premissas:
+
+O sistema será acessível para todos os envolvidos, será fácil de usar tanto no desktop quanto no mobile e terá integração com ferramentas de rastreamento de encomendas em tempo real.
+
+### Riscos:
+
+Problemas de integração com sistemas de transporte existentes, indisponibilidade de infraestrutura tecnológica, e resistência dos usuários a adotar um novo sistema.
+
+### OBJ SMART:
+
+Tornar o processo de entrega 20% mais rápido e reduzir erros de entrega em 15% nos primeiros seis meses após a implementação.
+
+### Requisitos:
+
+Interface intuitiva, integração com sistemas de rastreamento, API para integração com aplicativos de transportadoras, autenticação segura, e suporte multilíngue.
+
+### Benefícios (Futuro):
+
+Aumento na eficiência das operações de entrega, redução de custos logísticos, e satisfação dos usuários com uma plataforma moderna e fácil de usar.
+
+### Equipe:
+
+Desenvolvedores backend (Kotlin, RabbitMQ), frontend (React, Jetpack Compose), gerentes de produto, especialistas em UX/UI, equipe de suporte técnico.
+
+### Grupo de Entregas:
+
+Fases de desenvolvimento: MVP (Produto Mínimo Viável), Testes com usuários reais, Lançamento completo, Atualizações e melhorias contínuas.
+
+### Linha do Tempo:
+
+MVP em 3 meses, fase de testes em 4 meses, lançamento completo em 6 meses.
+
+### Restrições:
+
+Orçamento limitado, cronograma apertado, e recursos limitados para testes em larga escala.
+
+### Custos:
+
+Desenvolvimento de software, licenciamento de ferramentas, servidores para hospedagem, suporte técnico e treinamento para novos usuários.
+
 ## Autores 👤
 
 - [@DreLuis](https://www.github.com/DreLuis)
