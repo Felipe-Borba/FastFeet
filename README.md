@@ -115,7 +115,7 @@ Aumento na eficiência das operações de entrega, redução de custos logístic
 
 ### Equipe:
 
-Desenvolvedores backend (Kotlin, RabbitMQ), frontend (React, Jetpack Compose), gerentes de produto, especialistas em UX/UI, equipe de suporte técnico.
+Desenvolvedores backend (Javascript), frontend (React, Fluttler), gerentes de produto, especialistas em UX/UI, equipe de suporte técnico.
 
 ### Grupo de Entregas:
 
