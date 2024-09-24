@@ -133,6 +133,63 @@ Orçamento limitado, cronograma apertado, e recursos limitados para testes em la
 
 Desenvolvimento de software, licenciamento de ferramentas, servidores para hospedagem, suporte técnico e treinamento para novos usuários.
 
+# Business Model Canvas - Fast Feed
+
+## Key Partners (Principais Parceiros)
+- Empresas de transporte e logística
+- Provedores de serviços de rastreamento de encomendas
+- Empresas de tecnologia que oferecem infraestrutura de servidores
+- Parceiros de pagamento (para eventual integração de soluções de pagamento)
+
+## Key Activities (Atividades Principais)
+- Desenvolvimento e manutenção da plataforma de gestão de entregas
+- Suporte ao cliente e treinamento para administradores e entregadores
+- Integração com APIs de rastreamento e sistemas de transporte
+- Melhorias contínuas e implementação de novas funcionalidades baseadas no feedback dos usuários
+
+## Key Resources (Recursos Principais)
+- Equipe de desenvolvimento (backend e frontend)
+- Infraestrutura de servidores e armazenamento em nuvem
+- Integração com sistemas de rastreamento e APIs logísticas
+- Recursos de marketing para aquisição de novos usuários
+
+## Value Propositions (Propostas de Valor)
+- Plataforma que facilita o gerenciamento e monitoramento de entregas em tempo real
+- Interface intuitiva para administradores e entregadores
+- Redução de erros e aumento da eficiência logística
+- Comunicação eficiente entre entregadores e administradores
+- Sistema escalável para diferentes volumes de entregas
+
+## Customer Relationships (Relacionamento com Clientes)
+- Suporte técnico contínuo e treinamento
+- Atualizações frequentes com melhorias e novas funcionalidades
+- Comunicação direta com administradores e entregadores para resolução de problemas
+
+## Customer Segments (Segmentos de Clientes)
+- Empresas de transporte e logística
+- Pequenas e médias empresas (PMEs) que lidam com entregas
+- Entregadores autônomos
+- Grandes corporações com operações logísticas complexas
+
+## Channels (Canais)
+- Plataforma web e aplicativo mobile
+- Suporte técnico via chat e e-mail
+- Parcerias com empresas de transporte para distribuição
+- Campanhas de marketing digital
+
+## Cost Structure (Estrutura de Custos)
+- Custos com desenvolvimento e manutenção da plataforma
+- Hospedagem e infraestrutura de servidores
+- Equipe de suporte técnico e treinamento
+- Marketing e aquisição de novos usuários
+
+## Revenue Streams (Fontes de Receita)
+- Assinatura mensal/anual para acesso ao sistema
+- Taxas variáveis com base no volume de entregas gerenciadas
+- Cobrança por integrações adicionais (como APIs externas)
+- Taxas de treinamento e consultoria para grandes clientes
+
+
 ## Autores 👤
 
 - [@DreLuis](https://www.github.com/DreLuis)
